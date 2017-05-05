@@ -2,7 +2,7 @@
 
 session_start();
 
-define('DB_FILENAME', 'bestoon.db');
+define('DB_FILENAME', 'bestoon.sqlite3');
 
 define('SITE_URL', 'http://localhost/bestoon/');
 
