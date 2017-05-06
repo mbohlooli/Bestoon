@@ -1,4 +1,4 @@
 *.db
 *.data
 *.sqlite3
-nbporject
+!nbproject/
