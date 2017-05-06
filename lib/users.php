@@ -16,15 +16,15 @@ function user_count() {
 }
 
 function initialize_users() {
-    if(user_count() == 0) {
         global $db;
-        $default_pw_hash = sha1('admin');
-        $name = 'ادمین';
-        $db->query("
-            INSERT INTO users (username, password, first_name, last_name) VALUES
-            ('admin', '$default_pw_hash', '$name', '');
-        ");
-    }
+        if(!user_exists('admin')){
+          $default_pw_hash = sha1('admin');
+          $name = 'ادمین';
+          $db->query("
+              INSERT INTO users (username, password, first_name, last_name) VALUES
+              ('admin', '$default_pw_hash', '$name', '');
+          ");
+        }
 }
 
 function get_user($username) {
@@ -48,15 +48,17 @@ function user_exists($username) {
     return isset($user['id']);
 }
 
-function add_users($userdata) {
-    $username = $userdata['username'];
-    if(!$username) {
+function add_users($username, $password, $first_name, $last_name) {
+
+    /*if(!$userdata['username']) {
         return;
     }
+    $username = $userdata['username'];*/
 
-    $password = sha1($userdata['password']);
-    $first_name = $userdata['first_name'];
-    $last_name = $userdata['last_name'];
+    $password = sha1($password);
+    if(!$last_name){
+      $last_name = null;
+    }
 
     global $db;
     if(!user_exists($username)) {

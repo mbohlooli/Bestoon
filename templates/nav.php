@@ -41,6 +41,10 @@
                         <a href="<?php echo home_url('login'); ?>">ورود</a>
                     <?php endif; ?>
                 </li>
+                <li>
+                  <?php if(!is_user_loggen_in()): ?>
+                    <a href="<?php echo home_url('submit_user'); ?>">ثبت نام</a></li>
+                  <?php endif; ?>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
