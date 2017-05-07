@@ -1,4 +1,3 @@
 *.db
 *.data
 *.sqlite3
-!nbproject/
