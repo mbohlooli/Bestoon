@@ -1,3 +1,4 @@
+<?php if(is_user_loggen_in()): ?>
 <div id="income_modal" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -38,7 +39,28 @@
         </div>
     </div>
 </div>
+<?php else: ?>
+  <div id="income_modal" class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h3 class="modal-title">خطا</h3>
+              </div>
+            <div class="modal-body">
+              <div class="alert alert-warning alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <strong>برای ثبت دخل باید وارد شوید.</strong>
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+<?php
+  endif;
 
+  if(is_user_loggen_in()):
+?>
 <div id="expense_modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -79,4 +101,22 @@
         </div>
     </div>
 </div>
+<?php else: ?>
+  <div id="expense_modal" class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h3 class="modal-title">خطا</h3>
+              </div>
+            <div class="modal-body">
+              <div class="alert alert-warning alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <strong>برای ثبت خرج باید وارد شوید.</strong>
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+<?php endif; ?>
 <script src="<?php echo SITE_URL; ?>lib/date.js"></script>
