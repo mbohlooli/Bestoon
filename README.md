@@ -5,4 +5,5 @@
  With a default admin user
  
  admin user: admin
+ 
  admin password: admin
