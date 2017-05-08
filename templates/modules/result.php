@@ -1,14 +1,10 @@
 <?php
 
-function authentication_required() {
-    return true;
-}
-
 function get_title(){
     return 'صفحه برآیند ها';
 }
 function get_content(){
-
+if(is_user_loggen_in()){
   if(!isset($_GET['income_del']) && !isset($_GET['expense_del'])){
     error_reporting(0);
   }
@@ -21,7 +17,7 @@ function get_content(){
     $expense_name = $_GET['expense_del'];
     delete_expense_object($expense_name);
   }
-
+}
 ?>
 
   <div class="row">
@@ -45,9 +41,17 @@ function get_content(){
                     <th>موضوع دخل</th>
                     <th>میزان دخل</th>
                     <th>تاریخ دخل</th>
+                    <?php if(is_user_loggen_in()): ?>
                     <th>عملیات جانبی</th>
+                    <?php endif; ?>
                 </tr>
-                <?php get_all_income_objects(); ?>
+                <?php
+                  if(is_user_loggen_in()){
+                    get_all_income_objects();
+                  }else{
+                    get_all_income_objects_for_users();
+                  }
+                ?>
                 <tr>
                   <td colspan="1">جمع: </td>
                   <td colspan="4" class="success">
@@ -93,9 +97,17 @@ function get_content(){
                             <th>موضوع خرج</th>
                             <th>میزان خرج</th>
                             <th>تاریخ خرج</th>
+                            <?php if(is_user_loggen_in()): ?>
                             <th>عملیات جانبی</th>
+                            <?php endif; ?>
                         </tr>
-                        <?php get_all_expense_objects(); ?>
+                        <?php
+                          if(is_user_loggen_in()){
+                            get_all_expense_objects();
+                          }else{
+                            get_all_expense_objects_for_users();
+                          }
+                        ?>
                         <tr>
                           <td colspan="1">جمع: </td>
                           <td colspan="4" class="success">

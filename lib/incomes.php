@@ -117,6 +117,20 @@ function get_all_income_objects(){
   }
 }
 
+function get_all_income_objects_for_users(){
+  global $db;
+
+  $row = $db->query("
+    SELECT *
+    FROM incomes
+  ");
+  $rows_count = incomes_count();
+  for ($i=1; $i <= $rows_count; $i++) {
+    $current = $row->fetchArray(SQLITE3_ASSOC);
+    echo "<tr> <td>$i</td> <td>$current[income_name]</td> <td><div class='important'>$current[income_value]</div></td> <td>$current[income_date]</td></tr>";
+  }
+}
+
 function delete_income_object($income_object_name) {
     /*if(!income_object_exists($income_object_name)) {
         return;

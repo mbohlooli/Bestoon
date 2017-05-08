@@ -10,4 +10,5 @@ function get_content(){ ?>
   <strong>تمامی مبالغی که وارد می شوند با واحد تومان محاسبه خواهند شد.</strong>
   </div>
 
-<?php }
+<?php
+}

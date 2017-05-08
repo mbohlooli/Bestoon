@@ -1,8 +1,5 @@
 <?php
 
-  function authentication_required() {
-      return true;
-  }
   function get_title(){
     return 'نمودار';
   }

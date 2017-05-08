@@ -1,0 +1,13 @@
+Use ajax in submit_user.php for errors 
+----------------------------------------
+Make a resut & chart page for not logged in users
+----------------------------------------
+classify submit_user for admin           
+----------------------------------------
+Make a user management system for admin
+	1. Create
+	2. Read
+	3. Update
+	4. Delete
+	6. A table from users (GUI)
+----------------------------------------

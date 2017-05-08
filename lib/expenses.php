@@ -54,6 +54,20 @@ function get_all_expense_objects(){
   }
 }
 
+function get_all_expense_objects_for_users(){
+  global $db;
+
+  $row = $db->query("
+    SELECT *
+    FROM expenses
+  ");
+  $rows_count = expenses_count();
+  for ($i=1; $i <= $rows_count; $i++) {
+    $current = $row->fetchArray(SQLITE3_ASSOC);
+    echo "<tr> <td>$i</td> <td>$current[expense_name]</td> <td><div class='important'>$current[expense_value]</div></td> <td>$current[expense_date]</td></tr>";
+  }
+}
+
 
 
 function get_expense_object_value($expense_object_name, $full_row = false) {
