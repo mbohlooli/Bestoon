@@ -8,4 +8,4 @@
 
  admin password: admin
 
-> There's a filr named "works_to_do.txt" for people who want to contribute 
+> There's a file named "works_to_do.txt" for people who want to contribute 
