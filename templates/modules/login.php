@@ -81,7 +81,7 @@ function process_inputs() {
 
     if(!is_user_loggen_in()) {
         add_message('نام کاربری یا رمز عبور، اشتباه است.', 'error');
-    } else {
+    }else {
         redirect_to(home_url());
     }
 

@@ -1,8 +1,12 @@
-Use ajax in submit_user.php for errors 
+Set-up ajax for login page ==> line 84 to 104
+----------------------------------------
+Use add_message function for raising errors
+----------------------------------------
+Use ajax in submit_user.php for errors
 ----------------------------------------
 Make a resut & chart page for not logged in users
 ----------------------------------------
-classify submit_user for admin           
+classify submit_user for admin
 ----------------------------------------
 Make a user management system for admin
 	1. Create

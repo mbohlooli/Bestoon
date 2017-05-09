@@ -30,5 +30,5 @@ function create_db_tables() {
           first_name TEXT NOT NULL,
           last_name TEXT NOT NULL
       );
-   ");
+   "); 
 }

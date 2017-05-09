@@ -7,6 +7,7 @@ function get_title(){
 function get_content(){ ?>
   <?php get_module_name() ?>
 
+  <div id="error_area"></div>
   <div class="row">
       <div class="col-md-1"></div>
       <div class="col-md-10">
@@ -27,7 +28,7 @@ function get_content(){ ?>
                             $username = $_POST['username'];
                         }
                         ?>
-                          <input type="text" class="form-control" id="username" name="username" placeholder="نام کاربری" value="<?php echo $username; ?>">
+                          <input type="text" class="form-control" id="username" name="username" placeholder="نام کاربری" value="<?php echo $username; ?>" onkeyup="submit_processes()">
                       </div>
                   </div>
                   <div class="form-group">
@@ -39,7 +40,7 @@ function get_content(){ ?>
                             $first_name = $_POST['first_name'];
                         }
                         ?>
-                          <input type="text" class="form-control" id="first_name" name="first_name" placeholder="نام" value="<?php echo $first_name; ?>">
+                          <input type="text" class="form-control" id="first_name" name="first_name" placeholder="نام" value="<?php echo $first_name; ?>" onkeyup="submit_processes()">
                       </div>
                   </div>
                   <div class="form-group">
@@ -51,19 +52,19 @@ function get_content(){ ?>
                             $last_name = $_POST['last_name'];
                         }
                         ?>
-                          <input type="text" class="form-control" id="last_name" name="last_name" placeholder="نام خانوادگی" value="<?php echo $last_name; ?>">
+                          <input type="text" class="form-control" id="last_name" name="last_name" placeholder="نام خانوادگی" value="<?php echo $last_name; ?>" onkeyup="submit_processes()">
                       </div>
                   </div>
                   <div class="form-group">
                       <label for="repet_password" class="col-sm-2 control-label">رمز عبور</label>
                       <div class="col-sm-10">
-                          <input type="password" class="form-control" id="password" name="password" placeholder="رمز عبور">
+                          <input type="password" class="form-control" id="password" name="password" placeholder="رمز عبور" onkeyup="submit_processes()">
                       </div>
                   </div>
                   <div class="form-group">
                       <label for="password" class="col-sm-2 control-label">تکرار رمز عبور</label>
                       <div class="col-sm-10">
-                          <input type="password" class="form-control" id="repet_password" name="repet_password" placeholder="تکرار رمز عبور">
+                          <input type="password" class="form-control" id="repet_password" name="repet_password" placeholder="تکرار رمز عبور" onkeyup="submit_processes()">
                       </div>
                   </div>
                   <div class="form-group">
@@ -80,6 +81,27 @@ function get_content(){ ?>
       <div class="col-md-1"></div>
   </div>
 
+  <!--<script>
+    function submit_processes(){
+      var xhr;
+      if(window.XMLHttpRequest)
+          xhr = new XMLHttpRequest()
+      else //IE5,IE6
+          xhr = new ActiveXobject('Microsoft.XMLHttp')
+
+      xhr.onreadystatechange = function(){
+          if(xhr.readyState==4 && xhr.status==200){
+              document.getElementById('result').innerHTML = xhr.responseText;
+          }
+      }
+      var username = document.getElementById('username').value
+      var password = document.getElementById('password').value
+      var first_name = document.getElementById('first_name').value
+      var last_name = document.getElementById('last_name').value
+      xhr.open("POST", "<?php /*echo SITE_URL; */?>/lib/submit_user.", true)
+      xhr.send()
+    }
+  </script>-->
 <?php }
 
 function process_inputs() {

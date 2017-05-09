@@ -48,8 +48,7 @@
                   <h3 class="modal-title">خطا</h3>
               </div>
             <div class="modal-body">
-              <div class="alert alert-warning alert-dismissible" role="alert">
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <div class="alert alert-warning" role="alert">            
               <strong>برای ثبت دخل باید وارد شوید.</strong>
               </div>
             </div>
@@ -110,9 +109,8 @@
                   <h3 class="modal-title">خطا</h3>
               </div>
             <div class="modal-body">
-              <div class="alert alert-warning alert-dismissible" role="alert">
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <strong>برای ثبت خرج باید وارد شوید.</strong>
+              <div class="alert alert-warning" role="alert">
+                <strong>برای ثبت خرج باید وارد شوید.</strong>
               </div>
             </div>
           </div>
