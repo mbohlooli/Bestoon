@@ -9,8 +9,12 @@
       }*/
       $income_sum = get_incomes_sum();
       $expense_sum = get_expenses_sum();
+      $income_avg = get_incomes_avarage();
+      $expense_avg = get_expenses_avarage();
       $income_amount = $income_sum['SUM(income_value)'];
       $expense_amount = $expense_sum['SUM(expense_value)'];
+      $income_amount2 = $income_avg['AVG(income_value)'];
+      $expense_amount2 = $expense_avg['AVG(expense_value)'];
       $result = $income_amount - $expense_amount;
 ?>
     <div id="chartContainer"></div>
@@ -19,6 +23,8 @@
           array("y" => $income_amount, "label" => "دخل"),
           array("y" => $expense_amount, "label" => "خرج"),
           array("y" => $result, "label" => "موجودی"),
+          array("y" => $income_amount2, "label" => "میانگین دخل ها"),
+          array("y" => $expense_amount2, "label" => "میانگین خرج ها"),
       );
     ?>
     <script type="text/javascript">

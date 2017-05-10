@@ -19,6 +19,20 @@
                 <li><a href="#expense_modal" data-toggle="modal">ثبت خرج جدید</a></li>
                 <li><a href="<?php echo home_url('result'); ?>?income_del=0&expense_del=0">صفحه برآیند</a></li>
                 <li><a href="<?php echo home_url('chart'); ?>">نمودار</a></li>
+                <li>
+                  <?php
+                  if(is_user_loggen_in() && $_SESSION['user'] == 'admin'):
+                        /*$_SESSION['access'] = 'admin';
+                        session_write_close();*/
+                  ?>
+                      <a href="<?php echo home_url('users'); ?>" onclick="send_admin">کاربران</a>
+                  <?php endif; ?>
+                </li>
+                <li>
+                  <?php if($_SESSION['user'] == 'admin'): ?>
+                      <a href="<?php echo home_url('submit_user'); ?>">ثبت کاربر جدید</a>
+                  <?php endif; ?>
+                </li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -41,10 +55,6 @@
                         <a href="<?php echo home_url('login'); ?>">ورود</a>
                     <?php endif; ?>
                 </li>
-                <li>
-                  <?php if(!is_user_loggen_in()): ?>
-                    <a href="<?php echo home_url('submit_user'); ?>">ثبت نام</a></li>
-                  <?php endif; ?>
             </ul>
         </div><!--/.nav-collapse -->
     </div>

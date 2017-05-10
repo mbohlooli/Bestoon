@@ -1,12 +1,16 @@
 <?php
 
+function authentication_required() {
+    return true;
+}
+
 function get_title(){
   return 'ثبت نام';
 }
 
 function get_content(){ ?>
   <?php get_module_name() ?>
-
+  <?php if(isset($_SESSION['user']) && $_SESSION['user'] == 'admin'){ ?>
   <div id="error_area"></div>
   <div class="row">
       <div class="col-md-1"></div>
@@ -103,6 +107,10 @@ function get_content(){ ?>
     }
   </script>-->
 <?php }
+    else{
+      echo '<div class="alert alert-danger" role="alert">تنها کاربر ارشد می تواند به این صفحه دسترسی داشته باشد.</div>';
+    }
+}
 
 function process_inputs() {
 

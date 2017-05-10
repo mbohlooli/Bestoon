@@ -82,6 +82,16 @@ function process_inputs() {
     if(!is_user_loggen_in()) {
         add_message('نام کاربری یا رمز عبور، اشتباه است.', 'error');
     }else {
+
+        if(!isset($_SESSION)) { 
+              session_start();
+          }
+
+        setcookie(session_name(), session_id(), time() + 3600);
+
+        $_SESSION['user'] = $username;
+
+        session_write_close();
         redirect_to(home_url());
     }
 

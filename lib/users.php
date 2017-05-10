@@ -48,6 +48,37 @@ function user_exists($username) {
     return isset($user['id']);
 }
 
+/*function get_all_users(){
+  global $db;
+
+  $row = $db->query("
+    SELECT *
+    FROM users
+  ");
+  $rows_count = user_count();
+  for ($i=1; $i <= $rows_count; $i++) {
+    $current = $row->fetchArray(SQLITE3_ASSOC);
+    echo "<tr> <td>$i</td> <td>$current[username]</td> <td><div class='important'>$current[password]</div></td></tr>";
+  }
+}*/
+
+function get_all_users(){
+  global $db;
+
+  $row = $db->query("
+    SELECT *
+    FROM users
+  ");
+  $rows_count = user_count();
+  for ($i=1; $i <= $rows_count; $i++) {
+    $current = $row->fetchArray(SQLITE3_ASSOC);
+    if(!$current['last_name']){
+      $current['last_name'] = 'نا مشخص';
+    }
+    echo "<tr> <td>$i</td> <td>$current[username]</td> <td>$current[first_name]</td> <td>$current[last_name]</td></tr>";
+  }
+}
+
 function add_users($username, $password, $first_name, $last_name) {
 
     /*if(!$userdata['username']) {
