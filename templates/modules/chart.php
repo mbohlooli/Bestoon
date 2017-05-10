@@ -16,6 +16,9 @@
       $income_amount2 = $income_avg['AVG(income_value)'];
       $expense_amount2 = $expense_avg['AVG(expense_value)'];
       $result = $income_amount - $expense_amount;
+      if(!$result){
+        echo '<div class="alert alert-info" role="alert">هنوز دخل و خرجی ثبت نشده است.</div>';
+      }else{
 ?>
     <div id="chartContainer"></div>
     <?php
@@ -46,4 +49,6 @@
             chart.render();
         });
     </script>
-    <?php }
+    <?php
+      }
+    }

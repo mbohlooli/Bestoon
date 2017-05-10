@@ -29,7 +29,7 @@
                   <?php endif; ?>
                 </li>
                 <li>
-                  <?php if($_SESSION['user'] == 'admin'): ?>
+                  <?php if(is_user_loggen_in() && $_SESSION['user'] == 'admin'): ?>
                       <a href="<?php echo home_url('submit_user'); ?>">ثبت کاربر جدید</a>
                   <?php endif; ?>
                 </li>
