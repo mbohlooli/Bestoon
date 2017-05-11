@@ -26,8 +26,8 @@
           array("y" => $income_amount, "label" => "دخل"),
           array("y" => $expense_amount, "label" => "خرج"),
           array("y" => $result, "label" => "موجودی"),
-          array("y" => $income_amount2, "label" => "میانگین دخل ها"),
-          array("y" => $expense_amount2, "label" => "میانگین خرج ها"),
+          /*array("y" => $income_amount2, "label" => "میانگین دخل ها"),
+          array("y" => $expense_amount2, "label" => "میانگین خرج ها"),*/
       );
     ?>
     <script type="text/javascript">

@@ -165,7 +165,7 @@ function process_inputs() {
   if(!user_exists($username)) {
       add_message('عملیات ناموفق بود!', 'warning');
   } else {
-      redirect_to(home_url('login'));
+      redirect_to(home_url('users'));
   }
 
 }
