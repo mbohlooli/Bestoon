@@ -75,7 +75,11 @@ function get_all_users(){
     if(!$current['last_name']){
       $current['last_name'] = 'نا مشخص';
     }
-    echo "<tr> <td>$i</td> <td>$current[username]</td> <td>$current[first_name]</td> <td>$current[last_name]</td></tr>";
+    if($current['username'] == 'admin'){
+      echo "<tr> <td>$i</td> <td>$current[username]</td> <td>$current[first_name]</td> <td>$current[last_name]</td> <td> <button type='button' class='btn btn-primary btn-sm' >ویرایش</button> </td> </tr>";
+    }else{
+      echo "<tr> <td>$i</td> <td>$current[username]</td> <td>$current[first_name]</td> <td>$current[last_name]</td> <td> <button type='button' class='btn btn-primary btn-sm' >ویرایش</button> <a href='http://localhost/bestoon/users?user_del=$current[username]'><button type='button' class='btn btn-danger btn-sm'>حذف</button></a> </td> </tr>";
+    }
   }
 }
 

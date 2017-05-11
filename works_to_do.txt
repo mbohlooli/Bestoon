@@ -10,6 +10,6 @@ Make a user management system for admin
 	1. Create ----> Done
 	2. Read ------> Done
 	3. Update
-	4. Delete
-	6. A table from users (GUI) -----> In proccess
+	4. Delete -----> Done
+	6. A table from users (GUI) -----> Done
 ----------------------------------------

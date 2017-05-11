@@ -54,7 +54,7 @@
                     <?php else: ?>
                         <a href="<?php echo home_url('login'); ?>">ورود</a>
                     <?php endif; ?>
-                </li>
+                </li>          
             </ul>
         </div><!--/.nav-collapse -->
     </div>

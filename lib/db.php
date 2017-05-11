@@ -1,11 +1,8 @@
 <?php
-
 global $db;
 $db = new SQLite3(DB_FILENAME);
-
 function create_db_tables() {
     global $db;
-
     $db->query("
         CREATE TABLE IF NOT EXISTS incomes (
             income_name TEXT NOT NULL,
@@ -13,7 +10,6 @@ function create_db_tables() {
             income_date DATE NOT NULL
         );
     ");
-
     $db->query("
         CREATE TABLE IF NOT EXISTS expenses (
             expense_name TEXT NOT NULL,
@@ -21,7 +17,6 @@ function create_db_tables() {
             expense_date DATE NOT NULL
         );
    ");
-
    $db->query("
       CREATE TABLE IF NOT EXISTS users (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -30,5 +25,5 @@ function create_db_tables() {
           first_name TEXT NOT NULL,
           last_name TEXT NOT NULL
       );
-   "); 
+   ");
 }
