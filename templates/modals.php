@@ -48,7 +48,7 @@
                   <h3 class="modal-title">خطا</h3>
               </div>
             <div class="modal-body">
-              <div class="alert alert-warning" role="alert">            
+              <div class="alert alert-warning" role="alert">
               <strong>برای ثبت دخل باید وارد شوید.</strong>
               </div>
             </div>

@@ -4,6 +4,8 @@ Set-up ajax for submit_user page ==> line 84 to 104
 ----------------------------------------
 Make a sugesstions page for visitors
 ----------------------------------------
+improve update proccess in incomes & expenses
+----------------------------------------
 Use add_message function for raising errors & debug the function add_message in lib/modules.php line 60:70
 ----------------------------------------
 Use ajax in submit_user.php for errors

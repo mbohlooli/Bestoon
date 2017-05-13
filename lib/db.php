@@ -5,6 +5,7 @@ function create_db_tables() {
     global $db;
     $db->query("
         CREATE TABLE IF NOT EXISTS incomes (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
             income_name TEXT NOT NULL,
             income_value BIGINT NOT NULL,
             income_date DATE NOT NULL
@@ -12,6 +13,7 @@ function create_db_tables() {
     ");
     $db->query("
         CREATE TABLE IF NOT EXISTS expenses (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
             expense_name TEXT NOT NULL,
             expense_value BIGINT NOT NULL,
             expense_date DATE NOT NULL

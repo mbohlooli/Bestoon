@@ -39,37 +39,6 @@ function expenses_count() {
     return $counter;
 }
 
-
-function get_all_expense_objects(){
-  global $db;
-
-  $row = $db->query("
-    SELECT *
-    FROM expenses
-  ");
-  $rows_count = expenses_count();
-  for ($i=1; $i <= $rows_count; $i++) {
-    $current = $row->fetchArray(SQLITE3_ASSOC);
-    echo "<tr> <td>$i</td> <td>$current[expense_name]</td> <td><div class='important'>$current[expense_value]</div></td> <td>$current[expense_date]</td> <td> <button type='button' class='btn btn-primary btn-sm' >ویرایش</button> <a href='http://localhost/bestoon/result?income_del=0&expense_del=$current[expense_name]'><button type='button' class='btn btn-danger btn-sm'>حذف</button></a> </td></tr>";
-  }
-}
-
-function get_all_expense_objects_for_users(){
-  global $db;
-
-  $row = $db->query("
-    SELECT *
-    FROM expenses
-  ");
-  $rows_count = expenses_count();
-  for ($i=1; $i <= $rows_count; $i++) {
-    $current = $row->fetchArray(SQLITE3_ASSOC);
-    echo "<tr> <td>$i</td> <td>$current[expense_name]</td> <td><div class='important'>$current[expense_value]</div></td> <td>$current[expense_date]</td></tr>";
-  }
-}
-
-
-
 function get_expense_object_value($expense_object_name, $full_row = false) {
 
     if(!$expense_object_name) {
@@ -97,7 +66,7 @@ function get_expense_object_value($expense_object_name, $full_row = false) {
 
 function expense_object_exists($expense_object_name = null) {
     $row = get_expense_object_name($expense_object_name, true);
-    return isset($row['expense_object_name']);
+    return isset($row['id']);
 }
 
 function add_expense_object($expense_object_name, $expense_object_value = null, $expense_object_date) {
@@ -121,9 +90,9 @@ function add_expense_object($expense_object_name, $expense_object_value = null, 
     } else {
         $db->query("
             UPDATE expenses
-            SET expense_value = '$expense_object_value'
-            SET expense_date = '$expense_object_date'
-            WHERE expense_name = '$expense_object_name';
+            SET expense_value = '$expense_object_value',
+                expense_date = '$expense_object_date'
+                WHERE expense_name = '$expense_object_name';
         ");
 
     }
@@ -132,6 +101,80 @@ function add_expense_object($expense_object_name, $expense_object_value = null, 
 
 function update_expense_object($expense_object_name, $expense_object_value = null) {
     add_expense_object($expense_object_name, $expense_object_value);
+}
+
+function get_all_expense_objects(){
+  global $db;
+
+  $row = $db->query("
+    SELECT *
+    FROM expenses
+  ");
+  $rows_count = expenses_count();
+  for ($i=1; $i <= $rows_count; $i++) {
+    $current = $row->fetchArray(SQLITE3_ASSOC);
+    $url = SITE_URL.'expense_process';
+    $file = fopen('modals2.php', 'w+');
+    echo "<tr> <td>$i</td> <td>$current[expense_name]</td> <td><div class='important'>$current[expense_value]</div></td> <td>$current[expense_date]</td> <td> <a href='#expense_modal_$current[expense_name]' class='btn btn-primary btn-sm' data-toggle='modal'>ویرایش</a> <a href='http://localhost/bestoon/result?expense_del=$current[expense_name]&expense_del=0'><button type='button' class='btn btn-danger btn-sm'>حذف</button></a> </td></tr>";
+    $modal =  "<div id='expense_modal_$current[expense_name]' class='modal fade' tabindex='-1' role='dialog'>
+                <div class='modal-dialog' role='document'>
+                    <div class='modal-content'>
+                        <div class='modal-header'>
+                            <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                            <h3 class='modal-title'>ویرایش دخل</h3>
+                        </div>
+                      <div class='modal-body'>
+                        <form class='form-horizontal' method='post' action='$url'>
+                              <div class='form-group'>
+                                <label for='name' class='col-sm-2 control-label'>موضوع دخل</label>
+                                <div class='col-sm-10'>
+                                    <input style='display: none !important;' type='text' class='form-control' id='name' placeholder='موضوع درآمد' name='expense_name' value='$current[expense_name]'>
+                                </div>
+                                <p class='form-control-static'>$current[expense_name]</p>
+                            </div>
+                            <div class='form-group'>
+                              <label for='value' class='col-sm-2 control-label'>میزان دخل</label>
+                              <div class='col-sm-10'>
+                                  <input type='text' class='form-control' id='value' placeholder='میزان درآمد' name='expense_value' value='$current[expense_value]'>
+                              </div>
+                            </div>
+                            <div class='form-group'>
+                              <label for='value' class='col-sm-2 control-label'>تاریخ دخل</label>
+                              <div class='col-sm-2'>
+                                <a onclick='timeNow(expense_date)' href='#'><button type='button' class='btn btn-primary'>الآن</button></a>
+                              </div>
+                              <div class='col-sm-8'>
+                                    <input type='Month' class='form-control' id='expense_date' placeholder='ماه دخل(به میلادی)' name='expense_date' value='$current[expense_date]'>
+                              </div>
+                            </div>
+                            <div class='form-group'>
+                              <div class='col-sm-offset-2 col-sm-10'>
+                                <button type='submit' class='btn btn-success'>ثبت</button>
+                              </div>
+                            </div>
+                        </form>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            ";
+            fwrite($file, $modal);
+            fclose($file);
+  }
+}
+
+function get_all_expense_objects_for_users(){
+  global $db;
+
+  $row = $db->query("
+    SELECT *
+    FROM expenses
+  ");
+  $rows_count = expenses_count();
+  for ($i=1; $i <= $rows_count; $i++) {
+    $current = $row->fetchArray(SQLITE3_ASSOC);
+    echo "<tr> <td>$i</td> <td>$current[expense_name]</td> <td><div class='important'>$current[expense_value]</div></td> <td>$current[expense_date]</td></tr>";
+  }
 }
 
 function delete_expense_object($expense_object_name) {
@@ -145,6 +188,7 @@ function delete_expense_object($expense_object_name) {
         WHERE expense_name = '$expense_object_name';
     ");
 }
+
 function get_expenses_avarage(){
     global $db;
     $avg = $db->query("
