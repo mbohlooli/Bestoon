@@ -34,7 +34,7 @@ function get_content(){ ?>
                         ?>
                           <input type="text" class="form-control" id="username" name="username" placeholder="نام کاربری" value="<?php echo $username; ?>" onkeyup="submit_processes()">
                       </div>
-                  </div>
+                    </div>
                   <div class="form-group">
                       <label for="first_name" class="col-sm-2 control-label">نام</label>
                       <div class="col-sm-10">
@@ -57,6 +57,18 @@ function get_content(){ ?>
                         }
                         ?>
                           <input type="text" class="form-control" id="last_name" name="last_name" placeholder="نام خانوادگی" value="<?php echo $last_name; ?>" onkeyup="submit_processes()">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label for="email" class="col-sm-2 control-label">ایمیل</label>
+                      <div class="col-sm-10">
+                        <?php
+                        $email = '';
+                        if(isset($_POST['email'])) {
+                            $email = $_POST['email'];
+                        }
+                        ?>
+                          <input type="text" class="form-control" id="email" name="email" placeholder="ایمیل" value="<?php echo $email; ?>" onkeyup="submit_processes()">
                       </div>
                   </div>
                   <div class="form-group">
@@ -130,10 +142,22 @@ function process_inputs() {
   if(isset($_POST['last_name'])) {
       $last_name = $_POST['last_name'];
   }
-
+  if(isset($_POST['email'])) {
+      $email = $_POST['email'];
+  }
   if(empty($username)) {
       add_message('نام کاربری نمی تواند خالی باشد.', 'error');
       return;
+  }
+
+  if(!$email) {
+      add_message('نشانی ایمیل نمی تواند خالی باشد.', 'error');
+      return;
+  }
+
+  if(filter_var($email, FILTER_VALIDATE_EMAIL) === false){
+    add_message('ایمیل وارد شده معتبر نیست.', 'warning');
+    return;
   }
 
   if(isset($_POST['password'])) {
@@ -159,7 +183,7 @@ function process_inputs() {
     add_message('تکرار رمز عبور اشتباه است.', 'error');
     return;
   }else{
-    add_users($username, $password, $first_name, $last_name);
+    add_users($username, $password, $first_name, $last_name, $email);
   }
 
   if(!user_exists($username)) {

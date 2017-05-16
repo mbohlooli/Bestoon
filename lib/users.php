@@ -70,7 +70,7 @@ function get_all_users(){
   }
 }
 
-function add_users($username, $password, $first_name, $last_name) {
+function add_users($username, $password, $first_name, $last_name, $email) {
 
     /*if(!$userdata['username']) {
         return;
@@ -85,8 +85,8 @@ function add_users($username, $password, $first_name, $last_name) {
     global $db;
     if(!user_exists($username)) {
         $db->query("
-            INSERT INTO users (username, password, first_name, last_name) VALUES
-            ('$username', '$password', '$first_name', '$last_name');
+            INSERT INTO users (username, password, first_name, last_name, email) VALUES
+            ('$username', '$password', '$first_name', '$last_name', '$email');
         ");
 
     } else {
