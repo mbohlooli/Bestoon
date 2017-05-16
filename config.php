@@ -10,6 +10,8 @@ define('SITE_PATH', __DIR__ . DIRECTORY_SEPARATOR);
 
 define('APP_TITLE', 'بستون');
 
+define('ADMIN_EMAIL', 'mehrab.bohlooli@outlook.com');
+
 foreach(glob('lib/*.php') as $lib_file) {
     include_once($lib_file);
 }

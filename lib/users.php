@@ -20,9 +20,10 @@ function initialize_users() {
         if(!user_exists('admin')){
           $default_pw_hash = sha1('admin');
           $name = 'ادمین';
+          $email = ADMIN_EMAIL;
           $db->query("
-              INSERT INTO users (username, password, first_name, last_name) VALUES
-              ('admin', '$default_pw_hash', '$name', '');
+              INSERT INTO users (username, password, first_name, last_name, email) VALUES
+              ('admin', '$default_pw_hash', '$name', '', '$email');
           ");
         }
 }
