@@ -49,20 +49,6 @@ function user_exists($username) {
     return isset($user['id']);
 }
 
-/*function get_all_users(){
-  global $db;
-
-  $row = $db->query("
-    SELECT *
-    FROM users
-  ");
-  $rows_count = user_count();
-  for ($i=1; $i <= $rows_count; $i++) {
-    $current = $row->fetchArray(SQLITE3_ASSOC);
-    echo "<tr> <td>$i</td> <td>$current[username]</td> <td><div class='important'>$current[password]</div></td></tr>";
-  }
-}*/
-
 function get_all_users(){
   global $db;
 
@@ -77,7 +63,7 @@ function get_all_users(){
       $current['last_name'] = 'نا مشخص';
     }
     if($current['username'] == 'admin'){
-      echo "<tr> <td>$i</td> <td>$current[username]</td> <td>$current[first_name]</td> <td>$current[last_name]</td> <td> <button type='button' class='btn btn-primary btn-sm' >ویرایش</button> </td> </tr>";
+      echo "<tr> <td>$i</td> <td>$current[username]</td> <td>$current[first_name]</td> <td>$current[last_name]</td> <td style='font-size: 12pt;'>$current[email]</td> <td> <button type='button' class='btn btn-primary btn-sm' >ویرایش</button> </td> </tr>";
     }else{
       echo "<tr> <td>$i</td> <td>$current[username]</td> <td>$current[first_name]</td> <td>$current[last_name]</td> <td> <button type='button' class='btn btn-primary btn-sm' >ویرایش</button> <a href='http://localhost/bestoon/users?user_del=$current[username]'><button type='button' class='btn btn-danger btn-sm'>حذف</button></a> </td> </tr>";
     }

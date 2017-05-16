@@ -28,7 +28,7 @@ function get_content(){
      ?>
     <table class="table table-hover table-bordered table-striped table-responsive">
       <tr>
-        <th colspan="5" class="info">
+        <th colspan="6" class="info">
           <div align="center">جدول دخل ها</div>
         </th>
       </tr>
@@ -37,6 +37,7 @@ function get_content(){
           <th>نام کاربری</th>
           <th>نام</th>
           <th>نام خانوادگی</th>
+          <th>ایمیل</th>
           <th>عملیات جانبی</th>
   <?php    get_all_users();
   } else{
