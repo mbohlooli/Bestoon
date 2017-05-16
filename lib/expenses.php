@@ -113,53 +113,7 @@ function get_all_expense_objects(){
   $rows_count = expenses_count();
   for ($i=1; $i <= $rows_count; $i++) {
     $current = $row->fetchArray(SQLITE3_ASSOC);
-    $url = SITE_URL.'expense_process';
-    $file = fopen('modals2.php', 'w+');
-    echo "<tr> <td>$i</td> <td>$current[expense_name]</td> <td><div class='important'>$current[expense_value]</div></td> <td>$current[expense_date]</td> <td> <a href='#expense_modal_$current[expense_name]' class='btn btn-primary btn-sm' data-toggle='modal'>ویرایش</a> <a href='http://localhost/bestoon/result?expense_del=$current[expense_name]&income_del=0'><button type='button' class='btn btn-danger btn-sm'>حذف</button></a> </td></tr>";
-    $modal =  "<div id='expense_modal_$current[expense_name]' class='modal fade' tabindex='-1' role='dialog'>
-                <div class='modal-dialog' role='document'>
-                    <div class='modal-content'>
-                        <div class='modal-header'>
-                            <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-                            <h3 class='modal-title'>ویرایش دخل</h3>
-                        </div>
-                      <div class='modal-body'>
-                        <form class='form-horizontal' method='post' action='$url'>
-                              <div class='form-group'>
-                                <label for='name' class='col-sm-2 control-label'>موضوع دخل</label>
-                                <div class='col-sm-10'>
-                                    <input style='display: none !important;' type='text' class='form-control' id='name' placeholder='موضوع درآمد' name='expense_name' value='$current[expense_name]'>
-                                </div>
-                                <p class='form-control-static'>$current[expense_name]</p>
-                            </div>
-                            <div class='form-group'>
-                              <label for='value' class='col-sm-2 control-label'>میزان دخل</label>
-                              <div class='col-sm-10'>
-                                  <input type='text' class='form-control' id='value' placeholder='میزان درآمد' name='expense_value' value='$current[expense_value]'>
-                              </div>
-                            </div>
-                            <div class='form-group'>
-                              <label for='value' class='col-sm-2 control-label'>تاریخ دخل</label>
-                              <div class='col-sm-2'>
-                                <a onclick='timeNow(expense_date)' href='#'><button type='button' class='btn btn-primary'>الآن</button></a>
-                              </div>
-                              <div class='col-sm-8'>
-                                    <input type='Month' class='form-control' id='expense_date' placeholder='ماه دخل(به میلادی)' name='expense_date' value='$current[expense_date]'>
-                              </div>
-                            </div>
-                            <div class='form-group'>
-                              <div class='col-sm-offset-2 col-sm-10'>
-                                <button type='submit' class='btn btn-success'>ثبت</button>
-                              </div>
-                            </div>
-                        </form>
-                      </div>
-                    </div>
-                </div>
-            </div>
-            ";
-            fwrite($file, $modal);
-            fclose($file);
+    echo "<tr> <td>$i</td> <td>$current[expense_name]</td> <td><div class='important'>$current[expense_value]</div></td> <td>$current[expense_date]</td> <td> <a href='#' class='btn btn-primary btn-sm' data-toggle='modal'>ویرایش</a> <a href='http://localhost/bestoon/result?expense_del=$current[expense_name]&income_del=0'><button type='button' class='btn btn-danger btn-sm'>حذف</button></a> </td></tr>";
   }
 }
 
