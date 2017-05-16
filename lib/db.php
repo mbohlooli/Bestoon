@@ -8,7 +8,8 @@ function create_db_tables() {
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             income_name TEXT NOT NULL,
             income_value BIGINT NOT NULL,
-            income_date DATE NOT NULL
+            income_date DATE NOT NULL,
+            income_user TEXT NOT NULL
         );
     ");
     $db->query("
@@ -16,8 +17,15 @@ function create_db_tables() {
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             expense_name TEXT NOT NULL,
             expense_value BIGINT NOT NULL,
-            expense_date DATE NOT NULL
+            expense_date DATE NOT NULL,
+            expense_user TEXT NOT NULL
         );
+   ");
+   $db->query("
+      CREATE TABLE IF NOT EXISTS emails(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        email TEXT NOT NULL
+      );
    ");
    $db->query("
       CREATE TABLE IF NOT EXISTS users (
@@ -25,7 +33,8 @@ function create_db_tables() {
           username TEXT NOT NULL,
           password TEXT NOT NULL,
           first_name TEXT NOT NULL,
-          last_name TEXT NOT NULL
+          last_name TEXT NOT NULL,
+          email TEXT NOT NULL
       );
    ");
 }

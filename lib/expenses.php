@@ -115,7 +115,7 @@ function get_all_expense_objects(){
     $current = $row->fetchArray(SQLITE3_ASSOC);
     $url = SITE_URL.'expense_process';
     $file = fopen('modals2.php', 'w+');
-    echo "<tr> <td>$i</td> <td>$current[expense_name]</td> <td><div class='important'>$current[expense_value]</div></td> <td>$current[expense_date]</td> <td> <a href='#expense_modal_$current[expense_name]' class='btn btn-primary btn-sm' data-toggle='modal'>ویرایش</a> <a href='http://localhost/bestoon/result?expense_del=$current[expense_name]&expense_del=0'><button type='button' class='btn btn-danger btn-sm'>حذف</button></a> </td></tr>";
+    echo "<tr> <td>$i</td> <td>$current[expense_name]</td> <td><div class='important'>$current[expense_value]</div></td> <td>$current[expense_date]</td> <td> <a href='#expense_modal_$current[expense_name]' class='btn btn-primary btn-sm' data-toggle='modal'>ویرایش</a> <a href='http://localhost/bestoon/result?expense_del=$current[expense_name]&income_del=0'><button type='button' class='btn btn-danger btn-sm'>حذف</button></a> </td></tr>";
     $modal =  "<div id='expense_modal_$current[expense_name]' class='modal fade' tabindex='-1' role='dialog'>
                 <div class='modal-dialog' role='document'>
                     <div class='modal-content'>
