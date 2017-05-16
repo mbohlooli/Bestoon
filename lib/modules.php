@@ -7,7 +7,6 @@ function render_page() {
 
     include_once('templates/header.php');
 	  include_once('templates/modals.php');
-    include_once('modals2.php');
 
     show_messages();
 
