@@ -21,7 +21,7 @@
                 <li><a href="<?php echo home_url('chart'); ?>">نمودار</a></li>
                 <li>
                   <?php
-                  if(is_user_loggen_in() && $_SESSION['user'] == 'admin'):
+                  if(is_user_loggen_in() && get_current_logged_in_user() == 'admin'):
                         /*$_SESSION['access'] = 'admin';
                         session_write_close();*/
                   ?>
@@ -29,7 +29,7 @@
                   <?php endif; ?>
                 </li>
                 <li>
-                  <?php if(is_user_loggen_in() && $_SESSION['user'] == 'admin'): ?>
+                  <?php if(is_user_loggen_in() && get_current_logged_in_user() == 'admin'): ?>
                       <a href="<?php echo home_url('submit_user'); ?>">ثبت کاربر جدید</a>
                   <?php endif; ?>
                 </li>
