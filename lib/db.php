@@ -22,12 +22,6 @@ function create_db_tables() {
         );
    ");
    $db->query("
-      CREATE TABLE IF NOT EXISTS emails(
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        email TEXT NOT NULL
-      );
-   ");
-   $db->query("
       CREATE TABLE IF NOT EXISTS users (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           username TEXT NOT NULL,

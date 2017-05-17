@@ -75,6 +75,8 @@ function add_income_object($income_object_name, $income_object_value = null, $in
         return;
     }
 
+    $income_object_user = get_current_logged_in_user();
+
     if(!$income_object_value) {
         $income_object_value = '0';
     }
@@ -83,8 +85,8 @@ function add_income_object($income_object_name, $income_object_value = null, $in
 
     if(!income_object_exists($income_object_name)) {
         $db->query("
-            INSERT INTO incomes (income_name, income_value, income_date) VALUES
-            ('$income_object_name', '$income_object_value', '$income_object_date');
+            INSERT INTO incomes (income_name, income_value, income_date, income_user) VALUES
+            ('$income_object_name', '$income_object_value', '$income_object_date', '$income_object_user');
         ");
 
     } else {
@@ -113,7 +115,7 @@ function get_all_income_objects(){
   $rows_count = incomes_count();
   for ($i=1; $i <= $rows_count; $i++) {
     $current = $row->fetchArray(SQLITE3_ASSOC);
-    echo "<tr> <td>$i</td> <td>$current[income_name]</td> <td><div class='important'>$current[income_value]</div></td> <td>$current[income_date]</td> <td> <a href='#' class='btn btn-primary btn-sm' data-toggle='modal'>ویرایش</a> <a href='http://localhost/bestoon/result?income_del=$current[income_name]&expense_del=0'><button type='button' class='btn btn-danger btn-sm'>حذف</button></a> </td></tr>";
+    echo "<tr> <td>$i</td> <td>$current[income_name]</td> <td><div class='important'>$current[income_value]</div></td> <td>$current[income_user]</td> <td>$current[income_date]</td> <td> <a href='#' class='btn btn-primary btn-sm' data-toggle='modal'>ویرایش</a> <a href='http://localhost/bestoon/result?income_del=$current[income_name]&expense_del=0'><button type='button' class='btn btn-danger btn-sm'>حذف</button></a> </td></tr>";
   }
 }
 

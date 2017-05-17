@@ -1,5 +1,7 @@
 Classify incomes & expenses average by date in the chart
 ----------------------------------------
+check if email is not unic
+----------------------------------------
 Set-up ajax for submit_user page ==> line 84 to 104
 ----------------------------------------
 Make a sugesstions page for visitors
