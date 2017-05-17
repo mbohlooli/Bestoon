@@ -141,7 +141,7 @@ if(is_user_loggen_in()){
           if(!$expense_count && !$income_count):
           else:
         ?>
-            <div class="panel panel-info">
+            <div class="panel panel-primary">
               <div class="panel-heading">
                   <h3 class="panel-title">برآیند</h3>
               </div>
@@ -178,7 +178,7 @@ if(is_user_loggen_in()){
                       }
                   echo "</table>";
                 ?>
-                <a href="http://localhost/bestoon/chart"><button type="button" class="btn btn-primary">مشاهده نمودار</button></a>
+                <a href="http://localhost/bestoon/chart"><button type="button" class="btn btn-info">مشاهده نمودار</button></a>
               </div>
             </div>
           <?php endif; ?>

@@ -29,7 +29,7 @@ function get_content(){
     <table class="table table-hover table-bordered table-striped table-responsive">
       <tr>
         <th colspan="6" class="info">
-          <div align="center">جدول دخل ها</div>
+          <div align="center">جدول کاربران سیستم</div>
         </th>
       </tr>
       <tr class="warning">
