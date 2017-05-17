@@ -160,6 +160,11 @@ function process_inputs() {
     return;
   }
 
+  if(email_exists($email)){
+    add_message('این ایمیل قبلا استفاده شده است.', 'warning');
+    return;
+  }
+
   if(isset($_POST['password'])) {
       $password = $_POST['password'];
   }

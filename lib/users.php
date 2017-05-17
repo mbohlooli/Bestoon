@@ -1,5 +1,26 @@
 <?php
 
+
+function email_exists($email){
+    $user = get_user_by_email($email);
+    return isset($user['id']);
+}
+
+function get_user_by_email($email){
+  if(!$email) {
+      return null;
+  }
+
+  global $db;
+  $result = $db->query("
+      SELECT *
+      FROM users
+      WHERE email = '$email'
+  ");
+
+  $row = $result->fetchArray(SQLITE3_ASSOC);
+  return $row;
+}
 function user_count() {
     global $db;
     $results = $db->query("
@@ -88,7 +109,6 @@ function add_users($username, $password, $first_name, $last_name, $email) {
             INSERT INTO users (username, password, first_name, last_name, email) VALUES
             ('$username', '$password', '$first_name', '$last_name', '$email');
         ");
-
     } else {
         $db->query("
             UPDATE users
