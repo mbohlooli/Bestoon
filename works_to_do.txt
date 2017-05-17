@@ -1,10 +1,10 @@
-Classify incomes & expenses average by date in the chart
+Order incomes & expenses average by date in the chart
 ----------------------------------------
-check if email is not unic
+check if email is not unic ==> Done
 ----------------------------------------
 Set-up ajax for submit_user page ==> line 84 to 104
 ----------------------------------------
-Make a sugesstions page for visitors
+Make a sugesstions page for visitors ==> Done
 ----------------------------------------
 improve update proccess in incomes & expenses
 ----------------------------------------
