@@ -75,7 +75,8 @@ function add_expense_object($expense_object_name, $expense_object_value = null, 
         return;
     }
 
-    $expense_user = get_current_logged_in_user();
+    $user = get_user(get_current_logged_in_user());
+    $expense_object_user = $user['first_name'].$user['last_name'];
 
     if(!$expense_object_value) {
         $expense_object_value = '0';
@@ -86,7 +87,7 @@ function add_expense_object($expense_object_name, $expense_object_value = null, 
     if(!expense_object_exists($expense_object_name)) {
         $db->query("
             INSERT INTO expenses (expense_name, expense_value, expense_date, expense_user) VALUES
-            ('$expense_object_name', '$expense_object_value', '$expense_object_date', '$expense_user');
+            ('$expense_object_name', '$expense_object_value', '$expense_object_date', '$expense_object_user');
         ");
 
     } else {

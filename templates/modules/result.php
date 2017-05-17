@@ -32,7 +32,7 @@ if(is_user_loggen_in()){
             else: ?>
               <table class="table table-hover table-bordered table-striped table-responsive">
                 <tr>
-                  <th colspan="5" class="info">
+                  <th colspan="6" class="info">
                     <div align="center">جدول دخل ها</div>
                   </th>
                 </tr>
@@ -40,6 +40,7 @@ if(is_user_loggen_in()){
                     <th>ردیف</th>
                     <th>موضوع دخل</th>
                     <th>میزان دخل</th>
+                    <th>توسط</th>
                     <th>تاریخ دخل</th>
                     <?php if(is_user_loggen_in()): ?>
                     <th>عملیات جانبی</th>
@@ -54,7 +55,7 @@ if(is_user_loggen_in()){
                 ?>
                 <tr>
                   <td colspan="1">جمع: </td>
-                  <td colspan="4" class="success">
+                  <td colspan="5" class="success">
                     <div align="center">
                       <?php
                         $income_sum = get_incomes_sum();
@@ -65,7 +66,7 @@ if(is_user_loggen_in()){
                 </tr>
                 <tr>
                   <td colspan="1">میانگین: </td>
-                  <td colspan="4" class="info">
+                  <td colspan="5" class="info">
                     <div align="center">
                       <?php
                         $income_avg = get_incomes_avarage();
@@ -88,7 +89,7 @@ if(is_user_loggen_in()){
                     else: ?>
                       <table class="table table-hover table-bordered table-striped table-responsive">
                         <tr>
-                          <th colspan="5" class="info">
+                          <th colspan="6" class="info">
                             <div align="center">جدول خرج ها</div>
                           </th>
                         </tr>
@@ -96,6 +97,7 @@ if(is_user_loggen_in()){
                             <th>ردیف</th>
                             <th>موضوع خرج</th>
                             <th>میزان خرج</th>
+                            <th>توسط</th>
                             <th>تاریخ خرج</th>
                             <?php if(is_user_loggen_in()): ?>
                             <th>عملیات جانبی</th>
@@ -110,7 +112,7 @@ if(is_user_loggen_in()){
                         ?>
                         <tr>
                           <td colspan="1">جمع: </td>
-                          <td colspan="4" class="success">
+                          <td colspan="5" class="success">
                             <div align="center">
                               <?php
                                 $expense_sum = get_expenses_sum();
@@ -121,7 +123,7 @@ if(is_user_loggen_in()){
                         </tr>
                         <tr>
                           <td colspan="1">میانگین: </td>
-                          <td colspan="4" class="info">
+                          <td colspan="5" class="info">
                             <div align="center">
                               <?php
                                 $expense_avg = get_expenses_avarage();
