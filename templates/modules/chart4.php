@@ -8,11 +8,10 @@
 ?>
     <div id="chartContainer"></div>
     <?php
-      $dataPoints = array();
-      while( $res = $b->fetchArray(SQLITE3_ASSOC) ){
-        array_push($dataPoints,array("y" => $res['SUM(expense_value)'], "label" => $res['expense_date']));
-
-      }
+      $dataPoints = array(
+        array("y" => get_normal_income(), "label" => "متوسط درآمد ماهانه"),
+        array("y" => get_normal_expense(), "label" => "متوسط خرج ماهانه"),
+      );
     ?>
     <script type="text/javascript">
 
@@ -21,11 +20,11 @@
                 theme: "theme1",
                 animationEnabled: true,
                 title: {
-                    text: "نمودار خرج ها"
+                    text: "میانگین"
                 },
                 data: [
                 {
-                    type: "line",
+                    type: "column",
                     dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
                 }
                 ]
@@ -34,8 +33,7 @@
         });
     </script>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <a href="http://localhost/bestoon/chart4" class="btn btn-default">مشاهده نمودار بعدی</a>
-    <a href="http://localhost/bestoon/chart2" class="btn btn-default" style="float: left !important;">مشاهده نمودار قبلی</a>
+    <a href="http://localhost/bestoon/chart3" class="btn btn-default" style="float: left !important;">مشاهده نمودار قبلی</a>
 
 <?php
     }

@@ -1,6 +1,8 @@
 <?php
 
-/*function get_normal_income(){
+function get_normal_income(){
+  global $db;
+  
   $result = $db->query("
       SELECT AVG(M)
       FROM(
@@ -10,8 +12,9 @@
       );"
     );
 
-  return $result;
-}*/
+    $row = $result->fetchArray(SQLITE3_ASSOC);
+    return $row['AVG(M)'];
+}
 
 function order_incomes_by_date(){
 

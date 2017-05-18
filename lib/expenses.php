@@ -1,5 +1,21 @@
 <?php
 
+function get_normal_expense(){
+  global $db;
+  
+  $result = $db->query("
+      SELECT AVG(M)
+      FROM(
+        SELECT SUM(expense_value) as M
+        FROM expenses
+        GROUP BY expense_date
+      );"
+    );
+
+    $row = $result->fetchArray(SQLITE3_ASSOC);
+    return $row['AVG(M)'];
+}
+
 function order_expenses_by_date(){
 
   global $db;
