@@ -54,8 +54,8 @@
         });
     </script>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <?php } ?>
     <a href="http://localhost/bestoon/chart2" class="btn btn-default">مشاهده نمودار بعدی</a>
 
 <?php
-      }
-    }
+}

@@ -4,7 +4,12 @@
     return 'نمودار';
   }
     function get_content(){
-      $b = order_expenses_by_date();
+      $a= incomes_count();
+      $b = expenses_count();
+
+      if(!$a && !$b){
+        echo '<div class="alert alert-info" role="alert">هنوز دخل و خرجی ثبت نشده است.</div>';
+      }else{
 ?>
     <div id="chartContainer"></div>
     <?php
@@ -33,6 +38,7 @@
         });
     </script>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <?php } ?>
     <a href="http://localhost/bestoon/chart3" class="btn btn-default" style="float: left !important;">مشاهده نمودار قبلی</a>
 
 <?php
