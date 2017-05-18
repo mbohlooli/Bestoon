@@ -1,28 +1,41 @@
 <?php
 
+/*function get_normal_income(){
+  $result = $db->query("
+      SELECT AVG(M)
+      FROM(
+        SELECT SUM(income_value) as M
+        FROM incomes
+        GROUP BY income_date
+      );"
+    );
+
+  return $result;
+}*/
+
 function order_incomes_by_date(){
 
   global $db;
 
   $result = $db->query("
-    SELECT AVG(income_value), SUM(income_value),COUNT(income_date)
+    SELECT AVG(income_value), SUM(income_value), COUNT(income_date), income_date
     FROM incomes
     GROUP BY income_date;");
-
-  $row = array();
-  $i=0;
-
-   while($res = $result->fetchArray(SQLITE3_ASSOC)){
-
-       $row[$i]['avg'] = $res['AVG(income_value)'];
-       $row[$i]['sum'] = $res['SUM(income_value)'];
-       $row[$i]['count'] = $res['COUNT(income_date)'];
-
-       $i++;
-
-    }
-
-    return($row);
+    return($result);
+  // $row = array();
+  // $i=0;
+  //
+  //  while($res = $result->fetchArray(SQLITE3_ASSOC)){
+  //
+  //      $row[$i]['avg'] = $res['AVG(income_value)'];
+  //      $row[$i]['sum'] = $res['SUM(income_value)'];
+  //      $row[$i]['count'] = $res['COUNT(income_date)'];
+  //
+  //      $i++;
+  //
+  //   }
+  //
+  //   return($row);
 }
 
 function get_oldest_income(){

@@ -16,7 +16,7 @@
 
         <!-- Bootstrap -->
         <link href="<?php echo SITE_URL; ?>includes/bootstrap/css/bootstrap-rtl.css" rel="stylesheet">
-        <link href="<?php echo SITE_URL; ?>includes/bootstrap/css/bootstrap-rtl-theme.css" rel="stylesheet">
+        <link href="<?php echo SITE_URL; ?>includes/bootstrap/css/bootstrap-rtl-theme.css" rel="stylesheet">        
 
         <!-- Additional CSS -->
         <link href="<?php echo SITE_URL; ?>styles.css" rel="stylesheet">
@@ -29,7 +29,7 @@
         <!--[endif]-->
         <!-- charts scripts -->
         <script src="<?php echo SITE_URL; ?>includes/bootstrap/js/jquery-1.12.4.min.js"></script>
-        <script src="<?php echo SITE_URL; ?>includes/bootstrap/js/canvasjs.min.js"></script>        
+        <script src="<?php echo SITE_URL; ?>includes/bootstrap/js/canvasjs.min.js"></script>
     </head>
     <body>
 

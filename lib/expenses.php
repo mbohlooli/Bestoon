@@ -5,11 +5,11 @@ function order_expenses_by_date(){
   global $db;
 
   $result = $db->query("
-    SELECT AVG(expense_value), SUM(expense_value),COUNT(expense_date)
+    SELECT AVG(expense_value), SUM(expense_value),COUNT(expense_date), expense_date
     FROM expenses
     GROUP BY expense_date;");
-
-  $row = array();
+    return $result;
+  /*$row = array();
   $i=0;
 
    while($res = $result->fetchArray(SQLITE3_ASSOC)){
@@ -22,7 +22,7 @@ function order_expenses_by_date(){
 
     }
 
-    return($row);
+    return($row);*/
 }
 
 function get_oldest_expense(){

@@ -4,11 +4,7 @@
     return 'نمودار';
   }
     function get_content(){
-      /*if(!isset($_GET['income_amount']) || !isset($_GET['expense_amount'])){
-        die('برای مشاهده نمودار ابتدا از صفحه <a href="http://localhost/bestoon/result"> برآیند </a> بازدید کنید!');
-      }*/
-
-      print_r(order_dates());
+      # print_r(order_incomes_by_date());
 
       $income_sum = get_incomes_sum();
       $expense_sum = get_expenses_sum();
@@ -57,6 +53,9 @@
             chart.render();
         });
     </script>
-    <?php
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <a href="http://localhost/bestoon/chart2" class="btn btn-default">مشاهده نمودار بعدی</a>
+
+<?php
       }
     }
