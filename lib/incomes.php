@@ -1,5 +1,56 @@
 <?php
 
+function order_incomes_by_date(){
+
+  global $db;
+
+  $result = $db->query("
+    SELECT AVG(income_value), SUM(income_value),COUNT(income_date)
+    FROM incomes
+    GROUP BY income_date;");
+
+  $row = array();
+  $i=0;
+
+   while($res = $result->fetchArray(SQLITE3_ASSOC)){
+
+       $row[$i]['avg'] = $res['AVG(income_value)'];
+       $row[$i]['sum'] = $res['SUM(income_value)'];
+       $row[$i]['count'] = $res['COUNT(income_date)'];
+
+       $i++;
+
+    }
+
+    return($row);
+}
+
+function get_oldest_income(){
+  global $db;
+
+  $date = $db->query("
+    SELECT MIN(income_date)
+    FROM incomes
+  ");
+
+  $result = $date->fetchArray(SQLITE3_ASSOC);
+
+  return $result;
+}
+
+function get_latest_income(){
+  global $db;
+
+  $date = $db->query("
+    SELECT MAX(income_date)
+    FROM incomes
+  ");
+
+  $result = $date->fetchArray(SQLITE3_ASSOC);
+
+  return $result;
+}
+
 function get_income_object_name($income_object_name, $full_row = false){
   if(!$income_object_name) {
       return null;
@@ -76,7 +127,7 @@ function add_income_object($income_object_name, $income_object_value = null, $in
     }
 
     $user = get_user(get_current_logged_in_user());
-    $income_object_user = $user['first_name'].$user['last_name'];
+    $income_object_user = $user['first_name'].' '.$user['last_name'];
 
     if(!$income_object_value) {
         $income_object_value = '0';
@@ -107,6 +158,7 @@ function update_income_object($income_object_name, $income_object_value = null) 
 }
 
 function get_all_income_objects(){
+
   global $db;
 
   $row = $db->query("
@@ -116,7 +168,7 @@ function get_all_income_objects(){
   $rows_count = incomes_count();
   for ($i=1; $i <= $rows_count; $i++) {
     $current = $row->fetchArray(SQLITE3_ASSOC);
-    echo "<tr> <td>$i</td> <td>$current[income_name]</td> <td><div class='important'>$current[income_value]</div></td> <td>$current[income_user]</td> <td>$current[income_date]</td> <td> <a href='#' class='btn btn-primary btn-xs' data-toggle='modal'>ویرایش</a> <a href='http://localhost/bestoon/result?income_del=$current[income_name]&expense_del=0'><button type='button' class='btn btn-danger btn-xs'>حذف</button></a> </td></tr>";
+    echo "<tr> <td>$i</td> <td>$current[income_name]</td> <td><div class='important'>$current[income_value]</div></td> <td>$current[income_user]</td> <td>$current[income_date]</td> <td> <a href='#' class='btn btn-primary btn-xs' data-toggle='modal'>ویرایش</a> </td><td> <a href='http://localhost/bestoon/result?expense_del=0&income_del=$current[income_name]'><button type='button' class='btn btn-danger btn-xs'>حذف</button></a> </td></tr>";
   }
 }
 

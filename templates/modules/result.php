@@ -30,9 +30,9 @@ if(is_user_loggen_in()){
               echo 'هنوز هیچ دخلی ثبت نشده است.';
               echo '</div>';
             else: ?>
-              <table class="table table-hover table-bordered table-striped table-responsive">
+              <table class="table table-bordered table-striped table-responsive">
                 <tr>
-                  <th colspan="6" class="info">
+                  <th colspan="7" class="info">
                     <div align="center">جدول دخل ها</div>
                   </th>
                 </tr>
@@ -43,7 +43,7 @@ if(is_user_loggen_in()){
                     <th>توسط</th>
                     <th>تاریخ دخل</th>
                     <?php if(is_user_loggen_in()): ?>
-                    <th>عملیات جانبی</th>
+                    <th colspan="2">عملیات جانبی</th>
                     <?php endif; ?>
                 </tr>
                 <?php
@@ -55,7 +55,7 @@ if(is_user_loggen_in()){
                 ?>
                 <tr>
                   <td colspan="1">جمع: </td>
-                  <td colspan="5" class="success">
+                  <td colspan="6" class="success">
                     <div align="center">
                       <?php
                         $income_sum = get_incomes_sum();
@@ -66,7 +66,7 @@ if(is_user_loggen_in()){
                 </tr>
                 <tr>
                   <td colspan="1">میانگین: </td>
-                  <td colspan="5" class="info">
+                  <td colspan="6" class="info">
                     <div align="center">
                       <?php
                         $income_avg = get_incomes_avarage();
@@ -87,9 +87,9 @@ if(is_user_loggen_in()){
                       echo 'هنوز هیچ خرجی ثبت نشده است.';
                       echo '</div>';
                     else: ?>
-                      <table class="table table-hover table-bordered table-striped table-responsive">
+                      <table class="table table-bordered table-striped table-responsive">
                         <tr>
-                          <th colspan="6" class="info">
+                          <th colspan="7" class="info">
                             <div align="center">جدول خرج ها</div>
                           </th>
                         </tr>
@@ -100,7 +100,7 @@ if(is_user_loggen_in()){
                             <th>توسط</th>
                             <th>تاریخ خرج</th>
                             <?php if(is_user_loggen_in()): ?>
-                            <th>عملیات جانبی</th>
+                            <th colspan="2">عملیات جانبی</th>
                             <?php endif; ?>
                         </tr>
                         <?php
@@ -112,7 +112,7 @@ if(is_user_loggen_in()){
                         ?>
                         <tr>
                           <td colspan="1">جمع: </td>
-                          <td colspan="5" class="success">
+                          <td colspan="6" class="success">
                             <div align="center">
                               <?php
                                 $expense_sum = get_expenses_sum();
@@ -123,7 +123,7 @@ if(is_user_loggen_in()){
                         </tr>
                         <tr>
                           <td colspan="1">میانگین: </td>
-                          <td colspan="5" class="info">
+                          <td colspan="6" class="info">
                             <div align="center">
                               <?php
                                 $expense_avg = get_expenses_avarage();
@@ -161,7 +161,7 @@ if(is_user_loggen_in()){
                   $income_value = $income_sum['SUM(income_value)'];
                   $result = $income_value - $expense_value;
 
-                  echo "<table class='table table-hover table-bordered table-striped table-responsive'>";
+                  echo "<table class='table table-bordered table-striped table-responsive'>";
                   echo "<tr>";
                   echo "<th colspan='3'>موجودی: </th>";
                   echo "<td><div class='important' align='center'>$result</div></td>";

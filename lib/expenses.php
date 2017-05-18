@@ -1,5 +1,56 @@
 <?php
 
+function order_expenses_by_date(){
+
+  global $db;
+
+  $result = $db->query("
+    SELECT AVG(expense_value), SUM(expense_value),COUNT(expense_date)
+    FROM expenses
+    GROUP BY expense_date;");
+
+  $row = array();
+  $i=0;
+
+   while($res = $result->fetchArray(SQLITE3_ASSOC)){
+
+       $row[$i]['avg'] = $res['AVG(expense_value)'];
+       $row[$i]['sum'] = $res['SUM(expense_value)'];
+       $row[$i]['count'] = $res['COUNT(expense_date)'];
+
+       $i++;
+
+    }
+
+    return($row);
+}
+
+function get_oldest_expense(){
+  global $db;
+
+  $date = $db->query("
+    SELECT MIN(expense_date)
+    FROM expenses
+  ");
+
+  $result = $date->fetchArray(SQLITE3_ASSOC);
+
+  return $result;
+}
+
+function get_latest_expense(){
+  global $db;
+
+  $date = $db->query("
+    SELECT MAX(expense_date)
+    FROM expenses
+  ");
+
+  $result = $date->fetchArray(SQLITE3_ASSOC);
+
+  return $result;
+}
+
 function get_expense_object_name($expense_object_name, $full_row = false){
   if(!$expense_object_name) {
       return null;
@@ -116,7 +167,7 @@ function get_all_expense_objects(){
   $rows_count = expenses_count();
   for ($i=1; $i <= $rows_count; $i++) {
     $current = $row->fetchArray(SQLITE3_ASSOC);
-    echo "<tr> <td>$i</td> <td>$current[expense_name]</td> <td><div class='important'>$current[expense_value]</div></td> <td>$current[expense_user]</td> <td>$current[expense_date]</td> <td> <a href='#' class='btn btn-primary btn-xs' data-toggle='modal'>ویرایش</a> <a href='http://localhost/bestoon/result?expense_del=$current[expense_name]&income_del=0'><button type='button' class='btn btn-danger btn-xs'>حذف</button></a> </td></tr>";
+    echo "<tr> <td>$i</td> <td>$current[expense_name]</td> <td><div class='important'>$current[expense_value]</div></td> <td>$current[expense_user]</td> <td>$current[expense_date]</td> <td> <a href='#' class='btn btn-primary btn-xs' data-toggle='modal'>ویرایش</a> </td><td> <a href='http://localhost/bestoon/result?expense_del=$current[expense_name]&income_del=0'><button type='button' class='btn btn-danger btn-xs'>حذف</button></a> </td></tr>";
   }
 }
 
