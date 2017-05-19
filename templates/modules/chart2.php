@@ -16,7 +16,6 @@
       $dataPoints = array();
       while( $res = $a->fetchArray(SQLITE3_ASSOC) ){
         array_push($dataPoints,array("y" => $res['SUM(income_value)'], "label" => $res['income_date']));
-
       }
     ?>
     <script type="text/javascript">

@@ -16,6 +16,7 @@
       $dataPoints = array(
         array("y" => get_normal_income(), "label" => "متوسط درآمد ماهانه"),
         array("y" => get_normal_expense(), "label" => "متوسط خرج ماهانه"),
+        array("y" => get_normal_income() - get_normal_expense(), "label" => "پس انداز ماهانه"),
       );
     ?>
     <script type="text/javascript">

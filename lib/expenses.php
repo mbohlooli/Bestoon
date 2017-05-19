@@ -2,7 +2,7 @@
 
 function get_normal_expense(){
   global $db;
-  
+
   $result = $db->query("
       SELECT AVG(M)
       FROM(
@@ -197,7 +197,7 @@ function get_all_expense_objects_for_users(){
   $rows_count = expenses_count();
   for ($i=1; $i <= $rows_count; $i++) {
     $current = $row->fetchArray(SQLITE3_ASSOC);
-    echo "<tr> <td>$i</td> <td>$current[expense_name]</td> <td><div class='important'>$current[expense_value]</div></td> <td>$current[expense_date]</td></tr>";
+    echo "<tr> <td>$i</td> <td>$current[expense_name]</td> <td><div class='important'>$current[expense_value]</div></td> <td>$current[expense_user]</td> <td>$current[expense_date]</td></tr>";
   }
 }
 
