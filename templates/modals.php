@@ -21,7 +21,19 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="value" class="col-sm-2 control-label">تاریخ دخل</label>
+                  <label for="form-control" class="col-sm-2 control-label">دسته بندی</label>
+                  <div class="col-sm-10">
+                    <select class="form-control" id="form-control" name="income_category">
+                      <option>حقوق</option>
+                      <option>فروش</option>
+                      <option>یارانه</option>
+                      <option>اجاره</option>
+                      <option>بدهکار به من</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="income_date" class="col-sm-2 control-label">تاریخ دخل</label>
                   <div class="col-sm-2">
                     <a onclick="timeNow(income_date)" href="#"><button type="button" class="btn btn-primary">الآن</button></a>
                   </div>
@@ -70,21 +82,37 @@
           <div class="modal-body">
             <form class="form-horizontal" method="post" action="<?php echo SITE_URL; ?>expense_process">
                 <div class="form-group">
-                    <label for="name" class="col-sm-2 control-label">موضوع خرج</label>
+                    <label for="name2" class="col-sm-2 control-label">موضوع خرج</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="name" placeholder="موضوع خرج" name="expense_name">
+                        <input type="text" class="form-control" id="name2" placeholder="موضوع خرج" name="expense_name">
                     </div>
                 </div>
                 <div class="form-group">
-                  <label for="value" class="col-sm-2 control-label">میزان خرج</label>
+                  <label for="value2" class="col-sm-2 control-label">میزان خرج</label>
                   <div class="col-sm-10">
-                      <input type="text" class="form-control" id="value" placeholder="میزان خرج" name="expense_value">
+                      <input type="text" class="form-control" id="value2" placeholder="میزان خرج" name="expense_value">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="value" class="col-sm-2 control-label">تاریخ خرج</label>
+                  <label for="form-control2" class="col-sm-2 control-label">دسته بندی</label>
+                  <div class="col-sm-10">
+                    <select class="form-control" id="form-control2" name="expense_category">
+                      <option>خرید</option>
+                      <option>اجاره</option>
+                      <option>خودرو</option>
+                      <option>رفت و آمد</option>
+                      <option>غذا</option>
+                      <option>قبوض</option>
+                      <option>درمانی</option>
+                      <option>سرگرمی</option>
+                      <option>طلبکار از من</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="expense_date" class="col-sm-2 control-label">تاریخ خرج</label>
                   <div class="col-sm-2">
-                    <a onclick="timeNow(expense_date)" href="#"><button type="button" class="btn btn-primary"> الآن</button></a>
+                    <a onclick="timeNow(expense_date)" href="#"><button type="button" class="btn btn-primary" > الآن</button></a>
                   </div>
                   <div class="col-sm-8">
                       <input type="Month" class="form-control" id="expense_date" placeholder="ماه خرج(به میلادی)" name="expense_date">

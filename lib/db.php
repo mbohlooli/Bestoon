@@ -8,6 +8,7 @@ function create_db_tables() {
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             income_name TEXT NOT NULL,
             income_value BIGINT NOT NULL,
+            income_category TEXT NOT NULL,
             income_date DATE NOT NULL,
             income_user TEXT NOT NULL
         );
@@ -17,6 +18,7 @@ function create_db_tables() {
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             expense_name TEXT NOT NULL,
             expense_value BIGINT NOT NULL,
+            expense_category TEXT NOT NULL,
             expense_date DATE NOT NULL,
             expense_user TEXT NOT NULL
         );

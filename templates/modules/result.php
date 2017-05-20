@@ -21,7 +21,7 @@ if(is_user_loggen_in()){
 ?>
 
   <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="income_area" align="center">
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="income_area" align="center">
       <?php
           $income_count = incomes_count();
 
@@ -32,7 +32,7 @@ if(is_user_loggen_in()){
             else: ?>
               <table class="table table-bordered table-striped table-responsive">
                 <tr>
-                  <th colspan="7" class="info">
+                  <th colspan="8" class="info">
                     <div align="center">جدول دخل ها</div>
                   </th>
                 </tr>
@@ -40,6 +40,7 @@ if(is_user_loggen_in()){
                     <th>ردیف</th>
                     <th>موضوع دخل</th>
                     <th>میزان دخل</th>
+                    <th>دسته</th>
                     <th>توسط</th>
                     <th>تاریخ دخل</th>
                     <?php if(is_user_loggen_in()): ?>
@@ -55,7 +56,7 @@ if(is_user_loggen_in()){
                 ?>
                 <tr>
                   <td colspan="1">جمع: </td>
-                  <td colspan="6" class="success">
+                  <td colspan="7" class="success">
                     <div align="center">
                       <?php
                         $income_sum = get_incomes_sum();
@@ -66,7 +67,7 @@ if(is_user_loggen_in()){
                 </tr>
                 <tr>
                   <td colspan="1">میانگین: </td>
-                  <td colspan="6" class="info">
+                  <td colspan="7" class="info">
                     <div align="center">
                       <?php
                         $income_avg = get_incomes_avarage();
@@ -79,7 +80,7 @@ if(is_user_loggen_in()){
           <?php /*income_endif*/endif; ?>
         </div>
 
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="expense_area" align="center">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="expense_area" align="center">
               <?php
                     $expense_count = expenses_count();
                     if(!$expense_count):
@@ -89,7 +90,7 @@ if(is_user_loggen_in()){
                     else: ?>
                       <table class="table table-bordered table-striped table-responsive">
                         <tr>
-                          <th colspan="7" class="info">
+                          <th colspan="8" class="info">
                             <div align="center">جدول خرج ها</div>
                           </th>
                         </tr>
@@ -97,6 +98,7 @@ if(is_user_loggen_in()){
                             <th>ردیف</th>
                             <th>موضوع خرج</th>
                             <th>میزان خرج</th>
+                            <th>دسته</th>
                             <th>توسط</th>
                             <th>تاریخ خرج</th>
                             <?php if(is_user_loggen_in()): ?>
@@ -112,7 +114,7 @@ if(is_user_loggen_in()){
                         ?>
                         <tr>
                           <td colspan="1">جمع: </td>
-                          <td colspan="6" class="success">
+                          <td colspan="7" class="success">
                             <div align="center">
                               <?php
                                 $expense_sum = get_expenses_sum();
@@ -123,7 +125,7 @@ if(is_user_loggen_in()){
                         </tr>
                         <tr>
                           <td colspan="1">میانگین: </td>
-                          <td colspan="6" class="info">
+                          <td colspan="7" class="info">
                             <div align="center">
                               <?php
                                 $expense_avg = get_expenses_avarage();

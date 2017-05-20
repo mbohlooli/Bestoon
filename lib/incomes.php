@@ -1,8 +1,23 @@
 <?php
 
+
+function order_incomes($category){
+  global $db;
+
+  $res = $db->query("
+    SELECT SUM(income_value)
+    FROM incomes
+    WHERE income_category = '$category'
+  ");
+
+  $result = $res->fetcharray(SQLITE3_ASSOC);
+
+  return $result['SUM(income_value)'];
+}
+
 function get_normal_income(){
   global $db;
-  
+
   $result = $db->query("
       SELECT AVG(M)
       FROM(
@@ -136,7 +151,7 @@ function income_object_exists($income_object_name = null) {
     return isset($row['id']);
 }
 
-function add_income_object($income_object_name, $income_object_value = null, $income_object_date) {
+function add_income_object($income_object_name, $income_object_value = null, $income_object_date, $income_object_category) {
 
     if(!$income_object_name) {
         return;
@@ -153,8 +168,8 @@ function add_income_object($income_object_name, $income_object_value = null, $in
 
     if(!income_object_exists($income_object_name)) {
         $db->query("
-            INSERT INTO incomes (income_name, income_value, income_date, income_user) VALUES
-            ('$income_object_name', '$income_object_value', '$income_object_date', '$income_object_user');
+            INSERT INTO incomes (income_name, income_value, income_date, income_user, income_category) VALUES
+            ('$income_object_name', '$income_object_value', '$income_object_date', '$income_object_user', '$income_object_category');
         ");
 
     } else {
@@ -184,7 +199,7 @@ function get_all_income_objects(){
   $rows_count = incomes_count();
   for ($i=1; $i <= $rows_count; $i++) {
     $current = $row->fetchArray(SQLITE3_ASSOC);
-    echo "<tr> <td>$i</td> <td>$current[income_name]</td> <td><div class='important'>$current[income_value]</div></td> <td>$current[income_user]</td> <td>$current[income_date]</td> <td> <a href='#' class='btn btn-primary btn-xs' data-toggle='modal'>ویرایش</a> </td><td> <a href='http://localhost/bestoon/result?expense_del=0&income_del=$current[income_name]'><button type='button' class='btn btn-danger btn-xs'>حذف</button></a> </td></tr>";
+    echo "<tr> <td>$i</td> <td>$current[income_name]</td> <td><div class='important'>$current[income_value]</div></td> <td>$current[income_category]</td> <td>$current[income_user]</td> <td>$current[income_date]</td> <td> <a href='#' class='btn btn-primary btn-xs' data-toggle='modal'>ویرایش</a> </td><td> <a href='http://localhost/bestoon/result?expense_del=0&income_del=$current[income_name]'><button type='button' class='btn btn-danger btn-xs'>حذف</button></a> </td></tr>";
   }
 }
 

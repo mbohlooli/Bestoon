@@ -1,5 +1,19 @@
 <?php
 
+function order_expenses($category){
+  global $db;
+
+  $res = $db->query("
+    SELECT SUM(expense_value)
+    FROM expenses
+    WHERE expense_category = '$category'
+  ");
+
+  $result = $res->fetcharray(SQLITE3_ASSOC);
+
+  return $result['SUM(expense_value)'];
+}
+
 function get_normal_expense(){
   global $db;
 
@@ -136,7 +150,7 @@ function expense_object_exists($expense_object_name = null) {
     return isset($row['id']);
 }
 
-function add_expense_object($expense_object_name, $expense_object_value = null, $expense_object_date) {
+function add_expense_object($expense_object_name, $expense_object_value = null, $expense_object_date, $expense_object_category) {
 
     if(!$expense_object_name) {
         return;
@@ -153,8 +167,8 @@ function add_expense_object($expense_object_name, $expense_object_value = null, 
 
     if(!expense_object_exists($expense_object_name)) {
         $db->query("
-            INSERT INTO expenses (expense_name, expense_value, expense_date, expense_user) VALUES
-            ('$expense_object_name', '$expense_object_value', '$expense_object_date', '$expense_object_user');
+            INSERT INTO expenses (expense_name, expense_value, expense_date, expense_user, expense_category) VALUES
+            ('$expense_object_name', '$expense_object_value', '$expense_object_date', '$expense_object_user', '$expense_object_category');
         ");
 
     } else {
@@ -183,7 +197,7 @@ function get_all_expense_objects(){
   $rows_count = expenses_count();
   for ($i=1; $i <= $rows_count; $i++) {
     $current = $row->fetchArray(SQLITE3_ASSOC);
-    echo "<tr> <td>$i</td> <td>$current[expense_name]</td> <td><div class='important'>$current[expense_value]</div></td> <td>$current[expense_user]</td> <td>$current[expense_date]</td> <td> <a href='#' class='btn btn-primary btn-xs' data-toggle='modal'>ویرایش</a> </td><td> <a href='http://localhost/bestoon/result?expense_del=$current[expense_name]&income_del=0'><button type='button' class='btn btn-danger btn-xs'>حذف</button></a> </td></tr>";
+    echo "<tr> <td>$i</td> <td>$current[expense_name]</td> <td><div class='important'>$current[expense_value]</div></td> <td>$current[expense_category]</td> <td>$current[expense_user]</td> <td>$current[expense_date]</td> <td> <a href='#' class='btn btn-primary btn-xs' data-toggle='modal'>ویرایش</a> </td><td> <a href='http://localhost/bestoon/result?expense_del=$current[expense_name]&income_del=0'><button type='button' class='btn btn-danger btn-xs'>حذف</button></a> </td></tr>";
   }
 }
 
