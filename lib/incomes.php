@@ -213,7 +213,7 @@ function get_all_income_objects_for_users(){
   $rows_count = incomes_count();
   for ($i=1; $i <= $rows_count; $i++) {
     $current = $row->fetchArray(SQLITE3_ASSOC);
-    echo "<tr> <td>$i</td> <td>$current[income_name]</td> <td><div class='important'>$current[income_value]</div></td> <td>$current[income_user]</td> <td>$current[income_date]</td></tr>";
+    echo "<tr> <td>$i</td> <td>$current[income_name]</td> <td><div class='important'>$current[income_value]</div></td> <td>$current[income_category]</td> <td>$current[income_user]</td> <td>$current[income_date]</td></tr>";
   }
 }
 

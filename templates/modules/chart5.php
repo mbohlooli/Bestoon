@@ -8,7 +8,7 @@
       $b = order_incomes('فروش');
       $c = order_incomes('یارانه');
       $d = order_incomes('اجاره');
-      $e = order_incomes('بدهکاری به من');
+      $e = order_incomes('بدهکار به من');
 
       if(!$a && !$b && !$c && !$d && !$e){
         echo '<div class="alert alert-info" role="alert">هنوز دخلی ثبت نشده است.</div>';
@@ -31,7 +31,7 @@
           array_push($dataPoints, array("y" => $d, "label" => "اجاره"));
       }
       if($e){
-          array_push($dataPoints, array("y" => $e, "label" => "بدهکاری به من"));
+          array_push($dataPoints, array("y" => $e, "label" => "بدهکار به من"));
       }
     ?>
     <script type="text/javascript">
