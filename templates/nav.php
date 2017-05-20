@@ -7,8 +7,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<?php echo home_url(); ?>">
-                <?php echo APP_TITLE; ?>
+            <a class="navbar-brand" style="font-size: 16px !important; padding-top: 10px;" href="<?php echo home_url(); ?>">
+                <img id="logo" src="<?php echo SITE_URL; ?>includes/icons/logo.png" alt="<?php echo APP_TITLE; ?>">
             </a>
         </div>
 

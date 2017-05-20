@@ -32,3 +32,8 @@ body {
   direction: ltr !important;
   left: 0px !important;
 }
+
+#logo {
+  width: 33px;
+  height: 29.56666666.px;
+}

@@ -1,12 +1,12 @@
-Order incomes & expenses average by date in the chart
+Order incomes & expenses average by date in the chart ----> Done
 ----------------------------------------
-check if email is not unic ==> Done
+check if email is not unic -------> Done
 ----------------------------------------
 Set-up ajax for submit_user page ==> line 84 to 104
 ----------------------------------------
-Make a sugesstions page for visitors ==> Done
+Make a sugesstions page for visitors ---> Done
 ----------------------------------------
-improve update proccess in incomes & expenses
+create update proccess in incomes & expenses
 ----------------------------------------
 Use add_message function for raising errors & debug the function add_message in lib/modules.php line 60:70
 ----------------------------------------

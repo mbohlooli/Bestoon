@@ -21,7 +21,7 @@ if(is_user_loggen_in()){
 ?>
 
   <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="income_area" align="center">
+    <div class="col-lg-6 col-md-<?php if(!is_user_loggen_in()){ echo 6; }else{ echo 12; } ?> col-sm-12 col-xs-12" id="income_area" align="center">
       <?php
           $income_count = incomes_count();
 
@@ -30,7 +30,7 @@ if(is_user_loggen_in()){
               echo 'هنوز هیچ دخلی ثبت نشده است.';
               echo '</div>';
             else: ?>
-              <table class="table table-bordered table-striped table-responsive">
+              <table class="table table-bordered table-hover table-responsive">
                 <tr>
                   <th colspan="8" class="info">
                     <div align="center">جدول دخل ها</div>
@@ -80,7 +80,7 @@ if(is_user_loggen_in()){
           <?php /*income_endif*/endif; ?>
         </div>
 
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="expense_area" align="center">
+        <div class="col-lg-6 col-md-<?php if(!is_user_loggen_in()){ echo 6; }else{ echo 12; } ?> col-sm-12 col-xs-12" id="expense_area" align="center">
               <?php
                     $expense_count = expenses_count();
                     if(!$expense_count):
@@ -88,7 +88,7 @@ if(is_user_loggen_in()){
                       echo 'هنوز هیچ خرجی ثبت نشده است.';
                       echo '</div>';
                     else: ?>
-                      <table class="table table-bordered table-striped table-responsive">
+                      <table class="table table-bordered table-hover table-responsive">
                         <tr>
                           <th colspan="8" class="info">
                             <div align="center">جدول خرج ها</div>
