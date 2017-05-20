@@ -145,7 +145,7 @@ if(is_user_loggen_in()){
         ?>
             <div class="panel panel-primary">
               <div class="panel-heading">
-                  <h3 class="panel-title">برآیند</h3>
+                  <h3 class="panel-title">برآیند <span class="glyphicon glyphicon-edit"></span></h3>
               </div>
               <div class="panel-body">
                 <?php

@@ -71,7 +71,7 @@
     </script>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <?php } ?>
-    <a href="http://localhost/bestoon/chart5" class="btn btn-default" style="float: left !important;">مشاهده نمودار قبلی</a>
+    <a href="http://localhost/bestoon/chart5" class="btn btn-default" style="float: left !important;">مشاهده نمودار قبلی <span class=" glyphicon glyphicon-arrow-left"></span></a>
 
 <?php
     }

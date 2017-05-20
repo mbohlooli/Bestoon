@@ -40,8 +40,8 @@
     </script>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <?php } ?>
-    <a href="http://localhost/bestoon/chart5" class="btn btn-default" style="float: right !important;">مشاهده نمودار بعدی</a>
-    <a href="http://localhost/bestoon/chart3" class="btn btn-default" style="float: left !important;">مشاهده نمودار قبلی</a>
+    <a href="http://localhost/bestoon/chart5" class="btn btn-default" style="float: right !important;"><span class=" glyphicon glyphicon-arrow-right"></span> مشاهده نمودار بعدی</a>
+    <a href="http://localhost/bestoon/chart3" class="btn btn-default" style="float: left !important;">مشاهده نمودار قبلی <span class=" glyphicon glyphicon-arrow-left"></span></a>
 
 <?php
     }
