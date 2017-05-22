@@ -33,4 +33,16 @@ function create_db_tables() {
           email TEXT NOT NULL
       );
    ");
+   $db->query("
+      CREATE TABLE IF NOT EXISTS income_categories(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL
+      );
+   ");
+   $db->query("
+      CREATE TABLE IF NOT EXISTS expense_categories(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL
+      );
+   ");
 }

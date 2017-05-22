@@ -157,7 +157,7 @@ function add_expense_object($expense_object_name, $expense_object_value = null, 
     }
 
     $user = get_user(get_current_logged_in_user());
-    $expense_object_user = $user['first_name'].$user['last_name'];
+    $expense_object_user = $user['first_name'].' '.$user['last_name'];
 
     if(!$expense_object_value) {
         $expense_object_value = '0';
@@ -197,6 +197,10 @@ function get_all_expense_objects(){
   $rows_count = expenses_count();
   for ($i=1; $i <= $rows_count; $i++) {
     $current = $row->fetchArray(SQLITE3_ASSOC);
+    $current['expense_name'] = prepare_input($current['expense_name']);
+    $current['expense_value'] = prepare_input($current['expense_value']);
+    $current['expense_date'] = prepare_input($current['expense_date']);
+    $current['expense_category'] = prepare_input($current['expense_category']);
     echo "<tr> <td>$i</td> <td>$current[expense_name]</td> <td><div class='important'>$current[expense_value]</div></td> <td>$current[expense_category]</td> <td>$current[expense_user]</td> <td>$current[expense_date]</td> <td> <a href='#' class='btn btn-primary btn-xs' data-toggle='modal'>ویرایش</a> </td><td> <a href='http://localhost/bestoon/result?expense_del=$current[expense_name]&income_del=0'><button type='button' class='btn btn-danger btn-xs'>حذف</button></a> </td></tr>";
   }
 }

@@ -199,6 +199,10 @@ function get_all_income_objects(){
   $rows_count = incomes_count();
   for ($i=1; $i <= $rows_count; $i++) {
     $current = $row->fetchArray(SQLITE3_ASSOC);
+    $current['income_name'] = prepare_input($current['income_name']);
+    $current['income_value'] = prepare_input($current['income_value']);
+    $current['income_date'] = prepare_input($current['income_date']);
+    $current['income_category'] = prepare_input($current['income_category']);
     echo "<tr> <td>$i</td> <td>$current[income_name]</td> <td><div class='important'>$current[income_value]</div></td> <td>$current[income_category]</td> <td>$current[income_user]</td> <td>$current[income_date]</td> <td> <a href='#' class='btn btn-primary btn-xs' data-toggle='modal'>ویرایش</a> </td><td> <a href='http://localhost/bestoon/result?expense_del=0&income_del=$current[income_name]'><button type='button' class='btn btn-danger btn-xs'>حذف</button></a> </td></tr>";
   }
 }
