@@ -80,6 +80,10 @@ function get_all_users(){
   $rows_count = user_count();
   for ($i=1; $i <= $rows_count; $i++) {
     $current = $row->fetchArray(SQLITE3_ASSOC);
+    $current['username'] = prepare_input($current['username']);
+    $current['first_name'] = prepare_input($current['first_name']);
+    $current['last_name'] = prepare_input($current['last_name']);
+    $current['email'] = prepare_input($current['email']);
     if(!$current['last_name']){
       $current['last_name'] = 'نا مشخص';
     }
