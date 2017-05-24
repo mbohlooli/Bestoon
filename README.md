@@ -1,6 +1,6 @@
 # Bestoon
 
-##### A php app for managing your incomes & expenses
+### A php app for managing your incomes & expenses
 
 [![Database](includes/images/db.png)](https://www.mysql.com)
 
