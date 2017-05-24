@@ -18,7 +18,7 @@ function get_user_by_email($email){
       WHERE email = '$email'
   ");
 
-  $row = $result->fetchArray(SQLITE3_ASSOC);
+  $row = $result-> fetch_assoc();
   return $row;
 }
 function user_count() {
@@ -29,7 +29,7 @@ function user_count() {
     ");
 
     $counter = 0;
-    while($row = $results->fetchArray(SQLITE3_ASSOC)) {
+    while($row = $results->fetch_assoc()) {
         $counter++;
     }
 
@@ -61,7 +61,7 @@ function get_user($username) {
         WHERE username = '$username'
     ");
 
-    $row = $result->fetchArray(SQLITE3_ASSOC);
+    $row = $result->fetch_assoc();
     return $row;
 }
 
@@ -79,7 +79,7 @@ function get_all_users(){
   ");
   $rows_count = user_count();
   for ($i=1; $i <= $rows_count; $i++) {
-    $current = $row->fetchArray(SQLITE3_ASSOC);
+    $current = $row->fetch_assoc();
     $current['username'] = prepare_input($current['username']);
     $current['first_name'] = prepare_input($current['first_name']);
     $current['last_name'] = prepare_input($current['last_name']);

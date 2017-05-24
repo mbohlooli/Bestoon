@@ -2,7 +2,13 @@
 
 session_start();
 
-define('DB_FILENAME', 'bestoon.sqlite3');
+define('DB_FILENAME', 'bestoon_db');
+
+define('MYSQL_SERVER', 'localhost');
+
+define('MYSQL_USERNAME', 'mehrab');
+
+define('MYSQL_PASSWORD', '1234');
 
 define('SITE_URL', 'http://localhost/bestoon/');
 

@@ -20,7 +20,7 @@
 
       $result = $income_amount - $expense_amount;
 
-      if(!$result){
+      if(!$income_amount && !$expense_amount){
         echo '<div class="alert alert-info" role="alert">هنوز دخل و خرجی ثبت نشده است.</div>';
       }else{
 ?>

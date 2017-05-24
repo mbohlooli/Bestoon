@@ -9,7 +9,7 @@ function order_expenses($category){
     WHERE expense_category = '$category'
   ");
 
-  $result = $res->fetcharray(SQLITE3_ASSOC);
+  $result = $res->fetch_assoc();
 
   return $result['SUM(expense_value)'];
 }
@@ -23,10 +23,10 @@ function get_normal_expense(){
         SELECT SUM(expense_value) as M
         FROM expenses
         GROUP BY expense_date
-      );"
+      ) as T;"
     );
 
-    $row = $result->fetchArray(SQLITE3_ASSOC);
+    $row = $result->fetch_assoc();
     return $row['AVG(M)'];
 }
 
@@ -42,7 +42,7 @@ function order_expenses_by_date(){
   /*$row = array();
   $i=0;
 
-   while($res = $result->fetchArray(SQLITE3_ASSOC)){
+   while($res = $result->fetch_assoc()){
 
        $row[$i]['avg'] = $res['AVG(expense_value)'];
        $row[$i]['sum'] = $res['SUM(expense_value)'];
@@ -63,7 +63,7 @@ function get_oldest_expense(){
     FROM expenses
   ");
 
-  $result = $date->fetchArray(SQLITE3_ASSOC);
+  $result = $date->fetch_assoc();
 
   return $result;
 }
@@ -76,7 +76,7 @@ function get_latest_expense(){
     FROM expenses
   ");
 
-  $result = $date->fetchArray(SQLITE3_ASSOC);
+  $result = $date->fetch_assoc();
 
   return $result;
 }
@@ -93,7 +93,7 @@ function get_expense_object_name($expense_object_name, $full_row = false){
       WHERE expense_name = '$expense_object_name'
   ");
 
-  $row = $result->fetchArray(SQLITE3_ASSOC);
+  $row = $result->fetch_assoc();
   if($row) {
       if($full_row) {
           return $row;
@@ -113,7 +113,7 @@ function expenses_count() {
     ");
 
     $counter = 0;
-    while($row = $results->fetchArray(SQLITE3_ASSOC)) {
+    while($row = $results->fetch_assoc()) {
         $counter++;
     }
 
@@ -133,7 +133,7 @@ function get_expense_object_value($expense_object_name, $full_row = false) {
         WHERE expense_name = '$expense_object_name'
     ");
 
-    $row = $result->fetchArray(SQLITE3_ASSOC);
+    $row = $result->fetch_assoc();
     if($row) {
         if($full_row) {
             return $row;
@@ -196,7 +196,7 @@ function get_all_expense_objects(){
   ");
   $rows_count = expenses_count();
   for ($i=1; $i <= $rows_count; $i++) {
-    $current = $row->fetchArray(SQLITE3_ASSOC);
+    $current = $row->fetch_assoc();
     $current['expense_name'] = prepare_input($current['expense_name']);
     $current['expense_value'] = prepare_input($current['expense_value']);
     $current['expense_date'] = prepare_input($current['expense_date']);
@@ -214,7 +214,7 @@ function get_all_expense_objects_for_users(){
   ");
   $rows_count = expenses_count();
   for ($i=1; $i <= $rows_count; $i++) {
-    $current = $row->fetchArray(SQLITE3_ASSOC);
+    $current = $row->fetch_assoc();
     echo "<tr> <td>$i</td> <td>$current[expense_name]</td> <td><div class='important'>$current[expense_value]</div></td> <td>$current[expense_category]</td> <td>$current[expense_user]</td> <td>$current[expense_date]</td></tr>";
   }
 }
@@ -237,7 +237,7 @@ function get_expenses_avarage(){
       SELECT AVG(expense_value)
       FROM expenses
     ");
-    $result = $avg->fetchArray(SQLITE3_ASSOC);
+    $result = $avg->fetch_assoc();
     return $result;
 }
 
@@ -247,6 +247,6 @@ function get_expenses_sum(){
       SELECT SUM(expense_value)
       FROM expenses
     ");
-    $result = $sum->fetchArray(SQLITE3_ASSOC);
+    $result = $sum->fetch_assoc();
     return $result;
 }

@@ -15,7 +15,7 @@
     <div id="chartContainer"></div>
     <?php
       $dataPoints = array();
-      while( $res = $a->fetchArray(SQLITE3_ASSOC) ){
+      while( $res = $a->fetch_assoc() ){
         array_push($dataPoints,array("y" => $res['SUM(expense_value)'], "label" => $res['expense_date']));
       }
     ?>

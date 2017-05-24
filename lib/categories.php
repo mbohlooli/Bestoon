@@ -20,7 +20,7 @@
 //       WHERE name = '$name'
 //     ");
 //
-//     $row = $result->fetcharray(SQLITE3_ASSOC);
+//     $row = $result->fetch_assoc();
 //
 //     return $row;
 // }

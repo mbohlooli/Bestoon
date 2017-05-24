@@ -10,7 +10,7 @@ function order_incomes($category){
     WHERE income_category = '$category'
   ");
 
-  $result = $res->fetcharray(SQLITE3_ASSOC);
+  $result = $res->fetch_assoc();
 
   return $result['SUM(income_value)'];
 }
@@ -24,10 +24,10 @@ function get_normal_income(){
         SELECT SUM(income_value) as M
         FROM incomes
         GROUP BY income_date
-      );"
+      ) as T;"
     );
 
-    $row = $result->fetchArray(SQLITE3_ASSOC);
+    $row = $result->fetch_assoc();
     return $row['AVG(M)'];
 }
 
@@ -43,7 +43,7 @@ function order_incomes_by_date(){
   // $row = array();
   // $i=0;
   //
-  //  while($res = $result->fetchArray(SQLITE3_ASSOC)){
+  //  while($res = $result->fetch_assoc()){
   //
   //      $row[$i]['avg'] = $res['AVG(income_value)'];
   //      $row[$i]['sum'] = $res['SUM(income_value)'];
@@ -64,7 +64,7 @@ function get_oldest_income(){
     FROM incomes
   ");
 
-  $result = $date->fetchArray(SQLITE3_ASSOC);
+  $result = $date->fetch_assoc();
 
   return $result;
 }
@@ -77,7 +77,7 @@ function get_latest_income(){
     FROM incomes
   ");
 
-  $result = $date->fetchArray(SQLITE3_ASSOC);
+  $result = $date->fetch_assoc();
 
   return $result;
 }
@@ -94,7 +94,7 @@ function get_income_object_name($income_object_name, $full_row = false){
       WHERE income_name = '$income_object_name'
   ");
 
-  $row = $result->fetchArray(SQLITE3_ASSOC);
+  $row = $result->fetch_assoc();
   if($row) {
       if($full_row) {
           return $row;
@@ -114,7 +114,7 @@ function incomes_count() {
     ");
 
     $counter = 0;
-    while($row = $results->fetchArray(SQLITE3_ASSOC)) {
+    while($row = $results->fetch_assoc()) {
         $counter++;
     }
 
@@ -134,7 +134,7 @@ function get_income_object_value($income_object_name, $full_row = false) {
         WHERE income_name = '$income_object_name'
     ");
 
-    $row = $result->fetchArray(SQLITE3_ASSOC);
+    $row = $result->fetch_assoc();
     if($row) {
         if($full_row) {
             return $row;
@@ -198,7 +198,7 @@ function get_all_income_objects(){
   ");
   $rows_count = incomes_count();
   for ($i=1; $i <= $rows_count; $i++) {
-    $current = $row->fetchArray(SQLITE3_ASSOC);
+    $current = $row->fetch_assoc();
     $current['income_name'] = prepare_input($current['income_name']);
     $current['income_value'] = prepare_input($current['income_value']);
     $current['income_date'] = prepare_input($current['income_date']);
@@ -216,7 +216,7 @@ function get_all_income_objects_for_users(){
   ");
   $rows_count = incomes_count();
   for ($i=1; $i <= $rows_count; $i++) {
-    $current = $row->fetchArray(SQLITE3_ASSOC);
+    $current = $row->fetch_assoc();
     echo "<tr> <td>$i</td> <td>$current[income_name]</td> <td><div class='important'>$current[income_value]</div></td> <td>$current[income_category]</td> <td>$current[income_user]</td> <td>$current[income_date]</td></tr>";
   }
 }
@@ -239,7 +239,7 @@ function get_incomes_avarage(){
       SELECT AVG(income_value)
       FROM incomes
     ");
-    $result = $avg->fetchArray(SQLITE3_ASSOC);
+    $result = $avg->fetch_assoc();
     return $result;
 }
 
@@ -249,6 +249,6 @@ function get_incomes_sum(){
       SELECT SUM(income_value)
       FROM incomes
     ");
-    $result = $sum->fetchArray(SQLITE3_ASSOC);
+    $result = $sum->fetch_assoc();
     return $result;
 }
