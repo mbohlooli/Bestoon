@@ -16,7 +16,7 @@ admin password: admin
 
 ## How to install:
 
-1. Install (MySQL)[https://www.mysql.com/downloads] on your computer
+1. Install [MySQL](https://www.mysql.com/downloads) on your computer
 
 2. Go to _phpMyAdmin_ & create a user with all privileges
 
