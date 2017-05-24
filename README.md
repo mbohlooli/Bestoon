@@ -2,7 +2,7 @@
 
 ##### A php app for managing your incomes & expenses
 
-(![Database](includes/images/db.png))[https://www.mysql.com]
+[![Database](includes/images/db.png)](https://www.mysql.com)
 
 ```
 With a default admin user
