@@ -184,8 +184,20 @@ function add_income_object($income_object_name, $income_object_value = null, $in
 
 }
 
-function update_income_object($income_object_name, $income_object_value = null) {
-    add_income_object($income_object_name, $income_object_value);
+function update_income_object($id, $income_object_name, $income_object_value, $income_object_date, $income_object_category) {
+    $income_object_user = $user['first_name'].' '.$user['last_name'];
+
+    global $db;
+
+    $db->query("
+        UPDATE incomes
+        SET income_name = '$income_object_name',
+            income_value = '$income_object_value',
+            income_date = '$income_object_date',
+            income_user = '$income_user',,
+            income_category = '$income_object_category'
+        WHERE id = '$id'
+    ");
 }
 
 function get_all_income_objects(){
@@ -203,7 +215,7 @@ function get_all_income_objects(){
     $current['income_value'] = prepare_input($current['income_value']);
     $current['income_date'] = prepare_input($current['income_date']);
     $current['income_category'] = prepare_input($current['income_category']);
-    echo "<tr> <td>$i</td> <td>$current[income_name]</td> <td><div class='important'>$current[income_value]</div></td> <td>$current[income_category]</td> <td>$current[income_user]</td> <td>$current[income_date]</td> <td> <a href='#' class='btn btn-primary btn-xs' data-toggle='modal'>ویرایش</a> </td><td> <a href='http://localhost/bestoon/result?expense_del=0&income_del=$current[income_name]'><button type='button' class='btn btn-danger btn-xs'>حذف</button></a> </td></tr>";
+    echo "<tr> <td>$i</td> <td>$current[income_name]</td> <td><div class='important'>$current[income_value]</div></td> <td>$current[income_category]</td> <td>$current[income_user]</td> <td>$current[income_date]</td> <td> <a href='#income_edit_modal' class='btn btn-primary btn-xs' data-toggle='modal'>ویرایش</a> </td><td> <a href='http://localhost/bestoon/result?expense_del=0&income_del=$current[income_name]'><button type='button' class='btn btn-danger btn-xs'>حذف</button></a> </td></tr>";
   }
 }
 

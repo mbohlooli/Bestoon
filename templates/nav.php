@@ -14,9 +14,11 @@
 
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-				<li><a href="<?php echo home_url(); ?>">صفحه اصلی <span class="glyphicon glyphicon-home"></span></a></li>
-                <li><a href="#income_modal" data-toggle="modal">ثبت دخل جدید <span class="glyphicon glyphicon-usd"></span></a></li>
-                <li><a href="#expense_modal" data-toggle="modal">ثبت خرج جدید <span class="glyphicon glyphicon-eur"></span></a></li>
+				        <li><a href="<?php echo home_url(); ?>">صفحه اصلی <span class="glyphicon glyphicon-home"></span></a></li>
+                <?php if(is_user_loggen_in()){ ?>
+                  <li><a href="#income_modal" data-toggle="modal">ثبت دخل جدید <span class="glyphicon glyphicon-usd"></span></a></li>
+                  <li><a href="#expense_modal" data-toggle="modal">ثبت خرج جدید <span class="glyphicon glyphicon-eur"></span></a></li>
+                <?php } ?>                
                 <li><a href="<?php echo home_url('result'); ?>?income_del=0&expense_del=0">صفحه برآیند <span class="glyphicon glyphicon-list-alt"></span></a></li>
                 <li><a href="<?php echo home_url('chart'); ?>">نمودار <span class="glyphicon glyphicon-stats"></span></a></li>
                 <li>

@@ -183,8 +183,20 @@ function add_expense_object($expense_object_name, $expense_object_value = null, 
 
 }
 
-function update_expense_object($expense_object_name, $expense_object_value = null) {
-    add_expense_object($expense_object_name, $expense_object_value);
+function update_expense_object($id, $expense_object_name, $expense_object_value, $expense_object_date, $expense_object_category) {
+    $expense_object_user = $user['first_name'].' '.$user['last_name'];
+
+    global $db;
+
+    $db->query("
+        UPDATE expenses
+        SET expense_name = '$expense_object_name',
+            expense_value = '$expense_object_value',
+            expense_date = '$expense_object_date',
+			      expense_user = '$expense_object_user',
+            expense_category = '$expense_object_category'
+        WHERE id = '$id'
+    ");
 }
 
 function get_all_expense_objects(){
@@ -201,7 +213,7 @@ function get_all_expense_objects(){
     $current['expense_value'] = prepare_input($current['expense_value']);
     $current['expense_date'] = prepare_input($current['expense_date']);
     $current['expense_category'] = prepare_input($current['expense_category']);
-    echo "<tr> <td>$i</td> <td>$current[expense_name]</td> <td><div class='important'>$current[expense_value]</div></td> <td>$current[expense_category]</td> <td>$current[expense_user]</td> <td>$current[expense_date]</td> <td> <a href='#' class='btn btn-primary btn-xs' data-toggle='modal'>ویرایش</a> </td><td> <a href='http://localhost/bestoon/result?expense_del=$current[expense_name]&income_del=0'><button type='button' class='btn btn-danger btn-xs'>حذف</button></a> </td></tr>";
+    echo "<tr> <td>$i</td> <td>$current[expense_name]</td> <td><div class='important'>$current[expense_value]</div></td> <td>$current[expense_category]</td> <td>$current[expense_user]</td> <td>$current[expense_date]</td> <td> <a href='#expense_edit_modal' class='btn btn-primary btn-xs' data-toggle='modal'>ویرایش</a> </td><td> <a href='http://localhost/bestoon/result?expense_del=$current[expense_name]&income_del=0'><button type='button' class='btn btn-danger btn-xs'>حذف</button></a> </td></tr>";
   }
 }
 

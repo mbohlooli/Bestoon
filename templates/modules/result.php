@@ -19,7 +19,6 @@ if(is_user_loggen_in()){
   }
 }
 ?>
-
   <div class="row">
     <div class="col-lg-6 col-md-<?php if(!is_user_loggen_in()){ echo 6; }else{ echo 12; } ?> col-sm-12 col-xs-12" id="income_area" align="center">
       <?php
