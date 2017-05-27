@@ -25,3 +25,5 @@ foreach(glob('lib/*.php') as $lib_file) {
 
 create_db_tables();
 initialize_users();
+initialize_income_categories();
+initialize_expense_categories();

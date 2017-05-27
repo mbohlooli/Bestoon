@@ -1,4 +1,4 @@
-<?php if(is_user_loggen_in()): ?>
+
 <div id="income_modal" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -22,13 +22,12 @@
                 </div>
                 <div class="form-group">
                   <label for="form-control" class="col-sm-2 control-label">دسته بندی</label>
-                  <div class="col-sm-10">
+                  <div class="col-sm-3">
+                    <a class="btn btn-success" href="#add_income_category" data-toggle="modal">دسته جدید</a>
+                  </div>
+                  <div class="col-sm-7">
                     <select class="form-control" id="form-control" name="income_category">
-                      <option>حقوق</option>
-                      <option>فروش</option>
-                      <option>یارانه</option>
-                      <option>اجاره</option>
-                      <option>بدهکار به من</option>
+                      <?php get_all_income_categories(); ?>
                     </select>
                   </div>
                 </div>
@@ -51,27 +50,9 @@
         </div>
     </div>
 </div>
-<?php else: ?>
-  <div id="income_modal" class="modal fade" tabindex="-1" role="dialog">
-      <div class="modal-dialog" role="document">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h3 class="modal-title">خطا</h3>
-              </div>
-            <div class="modal-body">
-              <div class="alert alert-warning" role="alert">
-              <strong>برای ثبت دخل باید وارد شوید.</strong>
-              </div>
-            </div>
-          </div>
-      </div>
-  </div>
-<?php
-  endif;
 
-  if(is_user_loggen_in()):
-?>
+
+
 <div id="expense_modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -95,17 +76,12 @@
                 </div>
                 <div class="form-group">
                   <label for="form-control2" class="col-sm-2 control-label">دسته بندی</label>
-                  <div class="col-sm-10">
+                  <div class="col-sm-3">
+                    <a class="btn btn-success" href="#add_expense_category" data-toggle="modal">دسته جدید</a>
+                  </div>
+                  <div class="col-sm-7">
                     <select class="form-control" id="form-control2" name="expense_category">
-                      <option>خرید</option>
-                      <option>اجاره</option>
-                      <option>خودرو</option>
-                      <option>رفت و آمد</option>
-                      <option>غذا</option>
-                      <option>قبوض</option>
-                      <option>درمانی</option>
-                      <option>سرگرمی</option>
-                      <option>طلبکار از من</option>
+                      <?php get_all_expesne_categories(); ?>
                     </select>
                   </div>
                 </div>
@@ -128,21 +104,38 @@
         </div>
     </div>
 </div>
-<?php else: ?>
-  <div id="expense_modal" class="modal fade" tabindex="-1" role="dialog">
-      <div class="modal-dialog" role="document">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h3 class="modal-title">خطا</h3>
-              </div>
-            <div class="modal-body">
-              <div class="alert alert-warning" role="alert">
-                <strong>برای ثبت خرج باید وارد شوید.</strong>
-              </div>
-            </div>
+
+<div id="add_income_category" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+              <form class="form-horizontal" action="<?php echo SITE_URL; ?>add_income_category" method="post">
+                  <div class="form-group">
+                    <label for="income_category_name" class="col-sm-2 control-label">نام دسته</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="income_category_name" name="income_category" placeholder="نام دسته جدید">
+                    </div>
+                  </div>
+              </form>
           </div>
-      </div>
-  </div>
-<?php endif; ?>
+        </div>
+    </div>
+</div>
+
+<div id="add_expense_category" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+              <form class="form-horizontal" action="<?php echo SITE_URL; ?>add_expense_category" method="post">
+                  <div class="form-group">
+                    <label for="expense_category_name" class="col-sm-2 control-label">نام دسته</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="expense_category_name" name="expense_category" placeholder="نام دسته جدید">
+                    </div>
+                  </div>
+              </form>
+          </div>
+        </div>
+    </div>
+</div>
 <script src="<?php echo SITE_URL; ?>lib/date.js"></script>

@@ -213,7 +213,7 @@ function get_all_expense_objects(){
     $current['expense_value'] = prepare_input($current['expense_value']);
     $current['expense_date'] = prepare_input($current['expense_date']);
     $current['expense_category'] = prepare_input($current['expense_category']);
-    echo "<tr> <td>$i</td> <td>$current[expense_name]</td> <td><div class='important'>$current[expense_value]</div></td> <td>$current[expense_category]</td> <td>$current[expense_user]</td> <td>$current[expense_date]</td> <td> <a href='#expense_edit_modal' class='btn btn-primary btn-xs' data-toggle='modal'>ویرایش</a> </td><td> <a href='http://localhost/bestoon/result?expense_del=$current[expense_name]&income_del=0'><button type='button' class='btn btn-danger btn-xs'>حذف</button></a> </td></tr>";
+    echo "<tr> <td>$i</td> <td>$current[expense_name]</td> <td><div class='important'>$current[expense_value]</div></td> <td>$current[expense_category]</td> <td>$current[expense_user]</td> <td>$current[expense_date]</td> <td><div align='center'> <a href='#expense_edit_modal' class='btn btn-primary btn-xs' data-toggle='modal'>ویرایش</a> </div></td><td><div align='center'> <a href='http://localhost/bestoon/result?expense_del=$current[expense_name]&income_del=0'><button type='button' class='btn btn-danger btn-xs'>حذف</button></a> </div></td></tr>";
   }
 }
 
