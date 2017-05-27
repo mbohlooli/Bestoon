@@ -8,7 +8,7 @@ With a default admin user
 
 ```
 
-admin user: admin
+admin username: admin
 
 admin password: admin
 
@@ -48,7 +48,7 @@ admin password: admin
 ## TODO:
 
 - [x] Order incomes & expenses average by date in the chart
-- [x] check if email is not unic
+- [x] check if email is not unique
 - [x] Make a page for visitors(not users)
 - [ ] debug the function add_message(lib/modules.php line 60:70)
 - [ ] Use ajax in submit_user.php for errors
