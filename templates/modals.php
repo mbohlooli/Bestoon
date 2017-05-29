@@ -23,7 +23,7 @@
                 <div class="form-group">
                   <label for="form-control" class="col-sm-2 control-label">دسته بندی</label>
                   <div class="col-sm-3">
-                    <a class="btn btn-success" href="#add_income_category" data-toggle="modal">دسته جدید</a>
+                    <a class="btn btn-warning" href="#add_income_category" data-toggle="modal">دسته جدید</a>
                   </div>
                   <div class="col-sm-7">
                     <select class="form-control" id="form-control" name="income_category">
@@ -77,7 +77,7 @@
                 <div class="form-group">
                   <label for="form-control2" class="col-sm-2 control-label">دسته بندی</label>
                   <div class="col-sm-3">
-                    <a class="btn btn-success" href="#add_expense_category" data-toggle="modal">دسته جدید</a>
+                    <a class="btn btn-warning" href="#add_expense_category" data-toggle="modal">دسته جدید</a>
                   </div>
                   <div class="col-sm-7">
                     <select class="form-control" id="form-control2" name="expense_category">

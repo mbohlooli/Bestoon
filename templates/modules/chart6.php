@@ -4,50 +4,17 @@
     return 'نمودار';
   }
     function get_content(){
-      $a= order_expenses('خرید');
-      $b = order_expenses('اجاره');
-      $c = order_expenses('خودرو');
-      $d = order_expenses('رفت و آمد');
-      $e = order_expenses('غذا');
-      $f = order_expenses('قبوض');
-      $g = order_expenses('درمانی');
-      $h = order_expenses('سرگرمی');
-      $i = order_expenses('طلبکار از من');
 
-      if(!$a && !$b && !$c && !$d && !$e && !$f && !$g && !$h && !$i){
-        echo '<div class="alert alert-info" role="alert">هنوز خرجی ثبت نشده.</div>';
-      }else{
+      $row = order_expenses_by_category();
 ?>
     <div id="chartContainer"></div>
     <?php
       $dataPoints = array();
-
-      if($a){
-          array_push($dataPoints, array("y" => $a, "label" => "خرید"));
-      }
-      if($b){
-          array_push($dataPoints, array("y" => $b, "label" => "اجاره"));
-      }
-      if($c){
-          array_push($dataPoints, array("y" => $c, "label" => "خودرو"));
-      }
-      if($d){
-          array_push($dataPoints, array("y" => $d, "label" => "رفت و آمد"));
-      }
-      if($e){
-          array_push($dataPoints, array("y" => $e, "label" => "غذا"));
-      }
-      if($f){
-          array_push($dataPoints, array("y" => $f, "label" => "قبوض"));
-      }
-      if($g){
-          array_push($dataPoints, array("y" => $g, "label" => "درمانی"));
-      }
-      if($h){
-          array_push($dataPoints, array("y" => $h, "label" => "سرگرمی"));
-      }
-      if($i){
-          array_push($dataPoints, array("y" => $i, "label" => "طلبکار از من"));
+      while($res = $row->fetch_assoc()){
+          $array_object = order_expenses($res['name']);
+          if($array_object){
+              array_push($dataPoints, array("y" => $array_object, "label" => $res['name']));
+          }
       }
     ?>
     <script type="text/javascript">
@@ -70,7 +37,6 @@
         });
     </script>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <?php } ?>
     <a href="http://localhost/bestoon/chart5" class="btn btn-default" style="float: left !important;">مشاهده نمودار قبلی <span class=" glyphicon glyphicon-arrow-left"></span></a>
 
 <?php

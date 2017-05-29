@@ -32,6 +32,58 @@ function income_category_exists($name) {
     return isset($row['id']);
 }
 
+function order_incomes_by_category(){
+  global $db;
+
+  $row = $db->query("
+    SELECT *
+    FROM income_categories
+  ");
+
+  return $row;
+}
+
+function order_expenses_by_category(){
+  global $db;
+
+  $row = $db->query("
+    SELECT *
+    FROM expense_categories
+  ");
+
+  return $row;
+}
+
+function income_categories_count(){
+  global $db;
+  $results = $db->query("
+      SELECT *
+      FROM income_categories
+  ");
+
+  $counter = 0;
+  while($row = $results->fetch_assoc()) {
+      $counter++;
+  }
+
+  return $counter;
+}
+
+function expense_categories_count(){
+  global $db;
+  $results = $db->query("
+      SELECT *
+      FROM expense_categories
+  ");
+
+  $counter = 0;
+  while($row = $results->fetch_assoc()) {
+      $counter++;
+  }
+
+  return $counter;
+}
+
 
 function get_expense_category($name){
     global $db;

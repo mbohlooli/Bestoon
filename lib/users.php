@@ -21,6 +21,7 @@ function get_user_by_email($email){
   $row = $result-> fetch_assoc();
   return $row;
 }
+
 function user_count() {
     global $db;
     $results = $db->query("
