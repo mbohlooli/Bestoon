@@ -1,10 +1,13 @@
-<?php
+d<?php
 
 function get_title(){
   return 'ثبت خرج جدید';
 }
 
 function get_content(){
+    return;
+}
+function process_inputs(){
   if(empty($_POST)){
     die('<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>آدرس وارد شده، صحیح نیست.</div>');
   }
@@ -25,8 +28,6 @@ function get_content(){
     echo '<div class="alert alert-danger" role="alert">میزان  درآمد باید به صورت عددی و به تومان وارد شود.</div>';
   }else{
     add_income_object($_POST['income_name'], $_POST['income_value'], $_POST['income_date'], $_POST['income_category']);
-    echo '<div class="alert alert-success" role="alert">درآمد شما با موققیّت ثبت شد.';
-    echo '<p>برای مشاهده به  <a href="http://localhost/bestoon/result"> صفحه برآیند</a> مراجعه کنید."</p>';
-    echo '</div>';
+    redirect_to(home_url('result'));
   }
 }

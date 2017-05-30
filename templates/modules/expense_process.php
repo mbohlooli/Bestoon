@@ -9,6 +9,9 @@ function get_title(){
 }
 
 function get_content(){
+  return;
+}
+function process_inputs(){
   if(empty($_POST)){
     die('<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>آدرس وارد شده، صحیح نیست.</div>');
   }
@@ -24,10 +27,7 @@ function get_content(){
   }elseif(!is_numeric($_POST['expense_value'])){
     echo '<div class="alert alert-danger" role="alert">میزان خرج باید به صورت عددی و به تومان وارد شود.</div>';
   } else{
-
     add_expense_object($_POST['expense_name'], $_POST['expense_value'], $_POST['expense_date'], $_POST['expense_category']);
-    echo '<div class="alert alert-success" role="alert">خرج شما با موققیّت ثبت شد.';
-    echo '<p> برای مشاهده به  <a href="http://localhost/bestoon/result"> صفحه برآیند</a> مراجعه کنید."</p>';
-    echo '</div>';
+    redirect_to(home_url('results'));
   }
 }
