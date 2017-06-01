@@ -1,4 +1,4 @@
-d<?php
+<?php
 
 function get_title(){
   return 'ثبت خرج جدید';
@@ -28,6 +28,6 @@ function process_inputs(){
     echo '<div class="alert alert-danger" role="alert">میزان  درآمد باید به صورت عددی و به تومان وارد شود.</div>';
   }else{
     add_income_object($_POST['income_name'], $_POST['income_value'], $_POST['income_date'], $_POST['income_category']);
-    redirect_to(home_url('result'));
+    redirect_to(home_url('result').'?Income_status=1&Expense_status=0');
   }
 }

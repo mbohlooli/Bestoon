@@ -18,6 +18,21 @@ if(is_user_loggen_in()){
     delete_expense_object($expense_name);
   }
 }
+
+if(isset($_GET['Income_status']) && $_GET['Income_status']){ ?>
+  <div class="alert alert-success alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>درآمد شما با موفقیت ثبت شد.</strong>
+  </div>
+<?php
+  }
+  if(isset($_GET['Expense_status']) && $_GET['Expense_status']){ ?>
+    <div class="alert alert-success alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <strong>خرج شما با موفقیت ثبت شد.</strong>
+    </div>
+<?php
+  }
 ?>
   <div class="row">
     <div class="col-lg-6 col-md-<?php if(!is_user_loggen_in()){ echo 6; }else{ echo 12; } ?> col-sm-12 col-xs-12" id="income_area" align="center">

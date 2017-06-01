@@ -28,6 +28,6 @@ function process_inputs(){
     echo '<div class="alert alert-danger" role="alert">میزان خرج باید به صورت عددی و به تومان وارد شود.</div>';
   } else{
     add_expense_object($_POST['expense_name'], $_POST['expense_value'], $_POST['expense_date'], $_POST['expense_category']);
-    redirect_to(home_url('results'));
+    redirect_to(home_url('result').'?Income_status=0&Expense_status=1');
   }
 }

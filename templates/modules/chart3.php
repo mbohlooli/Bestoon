@@ -16,7 +16,8 @@
     <?php
       $dataPoints = array();
       while( $res = $a->fetch_assoc() ){
-        array_push($dataPoints,array("y" => $res['SUM(expense_value)'], "label" => $res['expense_date']));
+        $date = $res['expense_date'][0].$res['expense_date'][1].$res['expense_date'][2].$res['expense_date'][3].$res['expense_date'][4].$res['expense_date'][5].$res['expense_date'][6];
+        array_push($dataPoints,array("y" => $res['SUM(expense_value)'], "label" => $date));
       }
     ?>
     <script type="text/javascript">

@@ -23,7 +23,7 @@ function get_normal_income(){
       FROM(
         SELECT SUM(income_value) as M
         FROM incomes
-        GROUP BY income_date
+        GROUP BY MONTH(income_date)
       ) as T;"
     );
 
@@ -36,9 +36,9 @@ function order_incomes_by_date(){
   global $db;
 
   $result = $db->query("
-    SELECT AVG(income_value), SUM(income_value), COUNT(income_date), income_date
+    SELECT income_date, AVG(income_value), SUM(income_value), COUNT(income_date), income_date
     FROM incomes
-    GROUP BY income_date;");
+    GROUP BY MONTH(income_date);");
     return($result);
   // $row = array();
   // $i=0;

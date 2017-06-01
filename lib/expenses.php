@@ -22,7 +22,7 @@ function get_normal_expense(){
       FROM(
         SELECT SUM(expense_value) as M
         FROM expenses
-        GROUP BY expense_date
+        GROUP BY MONTH(expense_date)
       ) as T;"
     );
 
@@ -37,7 +37,7 @@ function order_expenses_by_date(){
   $result = $db->query("
     SELECT AVG(expense_value), SUM(expense_value),COUNT(expense_date), expense_date
     FROM expenses
-    GROUP BY expense_date;");
+    GROUP BY MONTH(expense_date);");
     return $result;
   /*$row = array();
   $i=0;
