@@ -19,6 +19,19 @@ if(is_user_loggen_in()){
   }
 }
 
+if(isset($_GET['i_u_a']) && $_GET['i_u_a']){ ?>
+  <div class="alert alert-success alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>درآمد به روزرسانی شد.</strong>
+  </div>
+<?php
+}
+if(isset($_GET['e_u_a']) && $_GET['e_u_a']){ ?>
+  <div class="alert alert-success alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>خرج به روزرسانی شد.</strong>
+  </div>
+<?php }
 if(isset($_GET['Income_status']) && $_GET['Income_status']){ ?>
   <div class="alert alert-success alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>

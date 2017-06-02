@@ -172,6 +172,30 @@ function add_expense_category($name){
     ");
 }
 
+
+function get_all_income_categories2(){
+  global $db;
+
+  $row = $db->query("
+    SELECT *
+    FROM income_categories
+  ");
+
+  return $row;
+}
+
+
+function get_all_expense_categories2(){
+  global $db;
+
+  $row = $db->query("
+    SELECT *
+    FROM expense_categories
+  ");
+
+  return $row;
+}
+
 function initialize_income_categories(){
     add_income_category('حقوق');
     add_income_category('فروش');

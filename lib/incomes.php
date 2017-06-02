@@ -1,6 +1,5 @@
 <?php
 
-
 function order_incomes($category){
   global $db;
 
@@ -185,6 +184,8 @@ function add_income_object($income_object_name, $income_object_value = null, $in
 }
 
 function update_income_object($id, $income_object_name, $income_object_value, $income_object_date, $income_object_category) {
+
+    $user = get_user(get_current_logged_in_user());
     $income_object_user = $user['first_name'].' '.$user['last_name'];
 
     global $db;
@@ -262,5 +263,20 @@ function get_incomes_sum(){
       FROM incomes
     ");
     $result = $sum->fetch_assoc();
+    return $result;
+}
+
+function get_income_object_by_id($id){
+
+    global $db;
+
+    $row = $db->query("
+        SELECT *
+        FROM incomes
+        WHERE id = $id
+    ");
+
+    $result = $row->fetch_assoc();
+
     return $result;
 }

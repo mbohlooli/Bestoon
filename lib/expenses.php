@@ -184,6 +184,8 @@ function add_expense_object($expense_object_name, $expense_object_value = null, 
 }
 
 function update_expense_object($id, $expense_object_name, $expense_object_value, $expense_object_date, $expense_object_category) {
+
+    $user = get_user(get_current_logged_in_user());
     $expense_object_user = $user['first_name'].' '.$user['last_name'];
 
     global $db;
@@ -213,7 +215,7 @@ function get_all_expense_objects(){
     $current['expense_value'] = prepare_input($current['expense_value']);
     $current['expense_date'] = prepare_input($current['expense_date']);
     $current['expense_category'] = prepare_input($current['expense_category']);
-    echo "<tr> <td>$i</td> <td>$current[expense_name]</td> <td><div class='important'>$current[expense_value]</div></td> <td>$current[expense_category]</td> <td>$current[expense_user]</td> <td>$current[expense_date]</td> <td><div align='center'> <a href='#expense_edit_modal' class='btn btn-primary btn-sm' data-toggle='modal'>ویرایش</a> </div></td><td><div align='center'> <a href='http://localhost/bestoon/result?expense_del=$current[expense_name]&income_del=0'><button type='button' class='btn btn-danger btn-sm'>حذف</button></a> </div></td></tr>";
+    echo "<tr> <td>$i</td> <td>$current[expense_name]</td> <td><div class='important'>$current[expense_value]</div></td> <td>$current[expense_category]</td> <td>$current[expense_user]</td> <td>$current[expense_date]</td> <td><div align='center'> <a href='http://localhost/bestoon/update?id=$current[id]&action=expense' class='btn btn-primary btn-sm'>ویرایش</a> </div></td><td><div align='center'> <a href='http://localhost/bestoon/result?expense_del=$current[expense_name]&income_del=0'><button type='button' class='btn btn-danger btn-sm'>حذف</button></a> </div></td></tr>";
   }
 }
 
@@ -261,4 +263,20 @@ function get_expenses_sum(){
     ");
     $result = $sum->fetch_assoc();
     return $result;
+}
+
+function get_expense_object_by_id($id){
+
+    global $db;
+
+    $row = $db->query("
+        SELECT *
+        FROM expenses
+        WHERE id = $id
+    ");
+
+    $result = $row->fetch_assoc();
+
+    return $result;
+
 }
