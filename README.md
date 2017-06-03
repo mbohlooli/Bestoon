@@ -54,4 +54,4 @@ admin password: admin
 - [ ] Use ajax in submit_user.php for errors
 - [x] Make a user management system for admin
 - [ ] Make update system for users, incomes, expenses
-- [ ] Save date with standard format in database
+- [x] Save date with standard format in database
