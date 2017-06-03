@@ -195,11 +195,12 @@ function update_income_object($id, $income_object_name, $income_object_value, $i
         SET income_name = '$income_object_name',
             income_value = '$income_object_value',
             income_date = '$income_object_date',
-            income_user = '$income_user',,
+			      income_user = '$income_object_user',
             income_category = '$income_object_category'
         WHERE id = '$id'
     ");
 }
+
 
 function get_all_income_objects(){
 
@@ -216,7 +217,7 @@ function get_all_income_objects(){
     $current['income_value'] = prepare_input($current['income_value']);
     $current['income_date'] = prepare_input($current['income_date']);
     $current['income_category'] = prepare_input($current['income_category']);
-    echo "<tr> <td>$i</td> <td>$current[income_name]</td> <td><div class='important'>$current[income_value]</div></td> <td>$current[income_category]</td> <td>$current[income_user]</td> <td>$current[income_date]</td> <td><div align='center'> <a href='#income_edit_modal' class='btn btn-primary btn-sm' data-toggle='modal'>ویرایش</a> </div></td><td><div align='center'> <a href='http://localhost/bestoon/result?expense_del=0&income_del=$current[income_name]'><button type='button' class='btn btn-danger btn-sm'>حذف</button></a> </div></td></tr>";
+    echo "<tr> <td>$i</td> <td>$current[income_name]</td> <td><div class='important'>$current[income_value]</div></td> <td>$current[income_category]</td> <td>$current[income_user]</td> <td>$current[income_date]</td> <td><div align='center'> <a href='http://localhost/bestoon/update?id=$current[id]&action=income' class='btn btn-primary btn-sm'>ویرایش</a> </div></td><td><div align='center'> <a href='http://localhost/bestoon/result?income_del=0&income_del=$current[income_name]'><button type='button' class='btn btn-danger btn-sm'>حذف</button></a> </div></td></tr>";
   }
 }
 

@@ -19,6 +19,7 @@ if(is_user_loggen_in()){
   }
 }
 
+
 if(isset($_GET['i_u_a']) && $_GET['i_u_a']){ ?>
   <div class="alert alert-success alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
