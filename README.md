@@ -50,8 +50,8 @@ admin password: admin
 - [x] Order incomes & expenses average by date in the chart
 - [x] check if email is not unique
 - [x] Make a page for visitors(not users)
-- [ ] debug the function add_message(lib/modules.php line 60:70)
+- [x] debug the function add_message(lib/modules.php line 60:70)
 - [ ] Use ajax in submit_user.php for errors
 - [x] Make a user management system for admin
-- [ ] Make update system for users, incomes, expenses
+- [x] Make update system for users, incomes, expenses
 - [x] Save date with standard format in database

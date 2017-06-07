@@ -66,6 +66,23 @@ function get_user($username) {
     return $row;
 }
 
+function get_user_by_id($id){
+
+    if(!$id){
+      return;
+    }
+
+    global $db;
+    $row = $db->query("
+        SELECT *
+        FROM users
+        WHERE id = '$id'
+    ");
+
+    $result = $row->fetch_assoc();
+    return $result;
+}
+
 function user_exists($username) {
     $user = get_user($username);
     return isset($user['id']);
@@ -89,9 +106,9 @@ function get_all_users(){
       $current['last_name'] = 'نا مشخص';
     }
     if($current['username'] == 'admin'){
-      echo "<tr> <td>$i</td> <td>$current[username]</td> <td>$current[first_name]</td> <td>$current[last_name]</td> <td style='font-size: 12pt;'>$current[email]</td> <td> <button type='button' class='btn btn-primary btn-sm' >ویرایش</button> </td> </tr>";
+      echo "<tr> <td>$i</td> <td>$current[username]</td> <td>$current[first_name]</td> <td>$current[last_name]</td> <td style='font-size: 12pt;'>$current[email]</td> <td> <a class='btn btn-primary btn-sm' href='http://localhost/bestoon/update_user?action=user&id=$current[id]'>ویرایش</a> </td> </tr>";
     }else{
-      echo "<tr> <td>$i</td> <td>$current[username]</td> <td>$current[first_name]</td> <td>$current[last_name]</td> <td style='font-size: 12pt;'>$current[email]</td> <td> <button type='button' class='btn btn-primary btn-sm' >ویرایش</button> <a href='http://localhost/bestoon/users?user_del=$current[username]'><button type='button' class='btn btn-danger btn-sm'>حذف</button></a> </td> </tr>";
+      echo "<tr> <td>$i</td> <td>$current[username]</td> <td>$current[first_name]</td> <td>$current[last_name]</td> <td style='font-size: 12pt;'>$current[email]</td> <td> <a class='btn btn-primary btn-sm' href='http://localhost/bestoon/update_user?action=user&id=$current[id]'>ویرایش</a> <a href='http://localhost/bestoon/users?user_del=$current[username]'><button type='button' class='btn btn-danger btn-sm'>حذف</button></a> </td> </tr>";
     }
   }
 }
@@ -124,8 +141,32 @@ function add_users($username, $password, $first_name, $last_name, $email) {
     }
 }
 
-function update_user($userdata) {
-    add_users($userdata);
+function update_user($id, $username, $password = null, $first_name, $lastname, $email) {
+
+    $user = get_user_by_id($id);
+
+    global $db;
+
+    $db->query("
+        UPDATE users
+        SET username = '$username',
+            first_name = '$first_name',
+			      last_name = '$lastname',
+            email = '$email'
+        WHERE id = '$id'
+    ");
+
+    if($password == 1){
+        $default_pass = sha1('12345678');
+        $db->query("
+            UPDATE users
+            SET password = '$default_pass'
+            WHERE id = '$id'
+        ");
+    } else{
+        return;
+    }
+
 }
 
 function delete_user($username) {

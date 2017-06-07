@@ -1,5 +1,14 @@
 <?php
 
+function get_value($param,$default = null) {
+        if (isset($_POST[$param])) {
+            $value = $_POST[$param];
+        } else {
+            $value = $default;
+        }
+        return $value;
+    }
+
 function home_url($path = null) {
     if(!$path || $path == '/') {
         return SITE_URL;

@@ -1,10 +1,17 @@
 <?php
 
+function authentication_required(){
+    return true;
+}
+
 function get_title(){
     return 'ویرایش';
 }
-function get_content(){
 
+function get_content(){
+    if(!isset($_GET['action']) || !isset($_GET['id']) || !$_GET['action'] || !$_GET['id']){
+      die('<div class="alert alert-danger">خطای غیر منتظره!</div>');
+    }
     if($_GET['action'] == 'income'){
 
         $object = get_income_object_by_id($_GET['id']);
