@@ -55,3 +55,6 @@ admin password: admin
 - [x] Make a user management system for admin
 - [x] Make update system for users, incomes, expenses
 - [x] Save date with standard format in database
+
+
+> Please make issue for any errors in app 

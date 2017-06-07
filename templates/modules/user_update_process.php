@@ -17,7 +17,11 @@ function process_inputs(){
   $test = get_user_by_id($_GET['id']);
   $a = get_value('reset_pass', 0);
 
-  if(user_exists($_POST['username']) && $_POST['username'] == get_current_logged_in_user() && get_current_logged_in_user() != 'admin'){
+  if($test['username'] == 'admin'){
+    $_POST['username'] = 'admin';
+  }
+
+  if(user_exists($_POST['username']) && $_POST['username'] == get_current_logged_in_user() && $test['username'] != 'admin'){
     add_message('نام کاربری نمی تواند تکراری باشد.', 'error');
     return;
   } elseif(isset($_POST['username'])) {
